@@ -112,6 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l1"><a class="reference internal" href="../../../whatsnew.html">What’s new in Conan 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devops.html">Devops guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integrations.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
@@ -250,7 +251,7 @@ See <a class="reference internal" href="../../../introduction.html#stability"><s
 <em class="property">class </em><code class="descname">UploadAPI</code><span class="sig-paren">(</span><em>conan_api</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.api.subapi.upload.UploadAPI" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="conan.api.subapi.upload.UploadAPI.check_upstream">
-<code class="descname">check_upstream</code><span class="sig-paren">(</span><em>package_list</em>, <em>remote</em>, <em>force=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.api.subapi.upload.UploadAPI.check_upstream" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_upstream</code><span class="sig-paren">(</span><em>package_list</em>, <em>remote</em>, <em>enabled_remotes</em>, <em>force=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.api.subapi.upload.UploadAPI.check_upstream" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the artifacts are already in the specified remote, skipping them from
 the package_list in that case</p>
 </dd></dl>
@@ -294,7 +295,7 @@ means all metadata will be uploaded together with the pkg artifacts</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 17, 2023.
+      Last updated on Aug 25, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 

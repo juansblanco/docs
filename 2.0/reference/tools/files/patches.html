@@ -112,6 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l1"><a class="reference internal" href="../../../whatsnew.html">What’s new in Conan 2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devops.html">Devops guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integrations.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
@@ -250,13 +251,13 @@ in the layout(self) method.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conanfile</strong> – the current recipe, always pass ‘self’</li>
 <li><strong>base_path</strong> – The path is a relative path to conanfile.export_sources_folder unless an
 absolute path is provided.</li>
 <li><strong>patch_file</strong> – Patch file that should be applied. The path is relative to the
 conanfile.source_folder unless an absolute path is provided.</li>
 <li><strong>patch_string</strong> – Patch string that should be applied.</li>
 <li><strong>strip</strong> – Number of folders to be stripped from the path.</li>
-<li><strong>output</strong> – Stream object.</li>
 <li><strong>fuzz</strong> – Should accept fuzzy patches.</li>
 <li><strong>kwargs</strong> – Extra parameters that can be added and will contribute to output information</li>
 </ul>
@@ -372,7 +373,7 @@ not defined in ‘conandata.yml’ it will export all the patches directly under
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 17, 2023.
+      Last updated on Aug 25, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
