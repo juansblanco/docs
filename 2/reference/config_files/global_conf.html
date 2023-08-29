@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>global.conf &mdash; conan 2.0.9 documentation</title>
+  <title>global.conf &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
         <link rel="up" title="Configuration files" href="../config_files.html"/>
         <link rel="next" title="profiles" href="profiles.html"/>
         <link rel="prev" title="Configuration files" href="../config_files.html"/>
@@ -127,6 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="settings.html">settings.yml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="remotes.html">remotes.json</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source_credentials.html">source_credentials.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credentials.html">credentials.json</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a></li>
@@ -304,16 +305,20 @@ tools.cmake.cmaketoolchain:toolchain_file: Use other existing file rather than c
 tools.cmake.cmaketoolchain:toolset_arch: Toolset architecture to be used as part of CMAKE_GENERATOR_TOOLSET in CMakeToolchain
 tools.cmake.cmaketoolchain:user_toolchain: Inject existing user toolchains at the beginning of conan_toolchain.cmake
 tools.cmake:cmake_program: Path to CMake executable
+tools.cmake:install_strip: Add --strip to cmake.instal()
 tools.compilation:verbosity: Verbosity of compilation tools if set. Possible values are &#39;quiet&#39; and &#39;verbose&#39;
+tools.deployer:symlinks: Set to False to disable deployers copying symlinks
 tools.env.virtualenv:powershell: If it is set to True it will generate powershell launchers if os=Windows
 tools.files.download:retry: Number of retries in case of failure when downloading
 tools.files.download:retry_wait: Seconds to wait between download attempts
+tools.files.download:verify: If set, overrides recipes on whether to perform SSL verification for their downloaded files. Only recommended to be set while testing
 tools.gnu:define_libcxx11_abi: Force definition of GLIBCXX_USE_CXX11_ABI=1 for libstdc++11
 tools.gnu:host_triplet: Custom host triplet to pass to Autotools scripts
 tools.gnu:make_program: Indicate path to make program
 tools.gnu:pkg_config: Path to pkg-config executable used by PkgConfig build helper
 tools.google.bazel:bazelrc_path: Defines Bazel rc-path
 tools.google.bazel:configs: Define Bazel config file
+tools.graph:skip_binaries: Allow the graph to skip binaries not needed in the current configuration (True by default)
 tools.info.package_id:confs: List of existing configuration to be part of the package ID
 tools.intel:installation_path: Defines the Intel oneAPI installation root path
 tools.intel:setvars_args: Custom arguments to be passed onto the setvars.sh|bat script from Intel oneAPI
@@ -330,7 +335,7 @@ tools.microsoft.msbuildtoolchain:compile_options: Dictionary with MSBuild compil
 tools.system.package_manager:mode: Mode for package_manager tools: &#39;check&#39;, &#39;report&#39;, &#39;report-installed&#39; or &#39;install&#39;
 tools.system.package_manager:sudo: Use &#39;sudo&#39; when invoking the package manager tools in Linux (False by default)
 tools.system.package_manager:sudo_askpass: Use the &#39;-A&#39; argument if using sudo in Linux to invoke the system package manager (False by default)
-tools.system.package_manager:tool: Default package manager tool: &#39;apt-get&#39;, &#39;yum&#39;, &#39;dnf&#39;, &#39;brew&#39;, &#39;pacman&#39;, &#39;choco&#39;, &#39;zypper&#39;, &#39;pkg&#39; or &#39;pkgutil&#39;
+tools.system.package_manager:tool: Default package manager tool: &#39;apk&#39;, &#39;apt-get&#39;, &#39;yum&#39;, &#39;dnf&#39;, &#39;brew&#39;, &#39;pacman&#39;, &#39;choco&#39;, &#39;zypper&#39;, &#39;pkg&#39; or &#39;pkgutil&#39;
 </pre></div>
 </div>
 </div>
@@ -475,6 +480,12 @@ core.net.http:client_cert=(&#39;/path/client.cert&#39;, &#39;/path/client.key&#3
 <li><a class="reference internal" href="../conanfile/methods/package_info.html#conan-conanfile-model-conf-info"><span class="std std-ref">Managing configuration in your recipes (self.conf_info)</span></a></li>
 </ul>
 </div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">tools.files.download:verify</span></code>: Setting <code class="docutils literal notranslate"><span class="pre">tools.files.download:verify=False</span></code> constitutes a security risk if enabled,
+as it disables certificate validation. Do not use it unless you understand the implications
+(And even then, properly scoping the conf to only the required recipes is a good idea)
+or if you are using it for development purposes</li>
+</ul>
 </div>
 </div>
 <div class="section" id="ux-confs">
@@ -516,7 +527,7 @@ by adding the warning tag to its value.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -923,7 +934,7 @@ by adding the warning tag to its value.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

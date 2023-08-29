@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan editable &mdash; conan 2.0.9 documentation</title>
+  <title>conan editable &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
         <link rel="up" title="Commands" href="../commands.html"/>
         <link rel="next" title="conan export" href="export.html"/>
         <link rel="prev" title="conan download" href="download.html"/>
@@ -241,9 +241,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="section" id="conan-editable-add">
 <h2>conan editable add<a class="headerlink" href="#conan-editable-add" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan editable add -h
-usage: conan editable add [-h] [-v [V]] [--name NAME]
-                          [--version VERSION] [--user USER]
-                          [--channel CHANNEL] [-of OUTPUT_FOLDER]
+usage: conan editable add [-h] [-v [V]] [--name NAME] [--version VERSION]
+                          [--user USER] [--channel CHANNEL]
+                          [-of OUTPUT_FOLDER] [-r REMOTE | -nr]
                           path
 
 Define the given &lt;path&gt; location as the package &lt;reference&gt;, so when this
@@ -253,7 +253,7 @@ cache.
 positional arguments:
   path                  Path to the package folder in the user workspace
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v [V]                Level of detail of the output. Valid options from less
                         verbose to more verbose: -vquiet, -verror, -vwarning,
@@ -266,6 +266,9 @@ optional arguments:
   --channel CHANNEL     Provide a channel if not specified in conanfile
   -of OUTPUT_FOLDER, --output-folder OUTPUT_FOLDER
                         The root output folder for generated and build files
+  -r REMOTE, --remote REMOTE
+                        Look in the specified remote or remotes server
+  -nr, --no-remote      Do not use remote, resolve exclusively in the cache
 </pre></div>
 </div>
 </div>
@@ -340,7 +343,7 @@ optional arguments:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -747,7 +750,7 @@ optional arguments:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

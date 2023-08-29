@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan.tools.system.package_manager &mdash; conan 2.0.9 documentation</title>
+  <title>conan.tools.system.package_manager &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.system" href="../system.html"/>
         <link rel="next" title="conan.tools.microsoft" href="../microsoft.html"/>
         <link rel="prev" title="conan.tools.system" href="../system.html"/>
@@ -241,8 +241,8 @@ default, when you invoke them they will not try to install anything on the syste
 change this behavior you can set the value of the <code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>
 <a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>.</p>
 <p>You can use these tools inside the <code class="docutils literal notranslate"><span class="pre">system_requirements()</span></code> method of your recipe, like:</p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">conanfile.py</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">conanfile.py</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan.tools.system.package_manager</span> <span class="kn">import</span> <span class="n">Apt</span><span class="p">,</span> <span class="n">Yum</span><span class="p">,</span> <span class="n">PacMan</span><span class="p">,</span> <span class="n">Zypper</span>
 
 <span class="k">def</span> <span class="nf">system_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -263,11 +263,12 @@ all the calls except for the <code class="docutils literal notranslate"><span cl
 <li><em>Apt</em> for <strong>Linux</strong> with distribution names: <em>ubuntu</em>, <em>debian</em> or <em>raspbian</em></li>
 <li><em>Yum</em> for <strong>Linux</strong> with distribution names: <em>pidora</em>, <em>scientific</em>, <em>xenserver</em>, <em>amazon</em>, <em>oracle</em>, <em>amzn</em>, <em>almalinux</em> or <em>rocky</em></li>
 <li><em>Dnf</em> for <strong>Linux</strong> with distribution names: <em>fedora</em>, <em>rhel</em>, <em>centos</em>, <em>mageia</em></li>
+<li><em>Apk</em> for <strong>Linux</strong> with distribution names: <em>alpine</em></li>
 <li><em>Brew</em> for <strong>macOS</strong></li>
 <li><em>PacMan</em> for <strong>Linux</strong> with distribution names: <em>arch</em>, <em>manjaro</em> and when using <strong>Windows</strong> with <em>msys2</em></li>
 <li><em>Chocolatey</em> for <strong>Windows</strong></li>
 <li><em>Zypper</em> for <strong>Linux</strong> with distribution names: <em>opensuse</em>, <em>sles</em></li>
-<li><em>Pkg</em> for <strong>Linux</strong> with distribution names: <em>freebsd</em></li>
+<li><em>Pkg</em> for <strong>FreeBSD</strong></li>
 <li><em>PkgUtil</em> for <strong>Solaris</strong></li>
 </ul>
 <p>You can override this default mapping and set the package manager tool you want to use by
@@ -306,8 +307,8 @@ installed. It will return a list with the packages that are missing.</li>
 affect how these tools are invoked:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:tool</span></code>: to choose which package manager tool you want to
-use by default: <code class="docutils literal notranslate"><span class="pre">&quot;apt-get&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;yum&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;dnf&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;brew&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pacman&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;choco&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;zypper&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pkg&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pkgutil&quot;</span></code></li>
+use by default: <code class="docutils literal notranslate"><span class="pre">&quot;apk&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;apt-get&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;yum&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;dnf&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;brew&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;pacman&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;choco&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;zypper&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pkg&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;pkgutil&quot;</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>: mode to use when invoking the package manager
 tool. There are two possible values:<ul>
 <li><code class="docutils literal notranslate"><span class="pre">&quot;check&quot;</span></code>: it will just check for missing packages at most and will not try to
@@ -329,12 +330,126 @@ Linux to invoke the system package manager (<code class="docutils literal notran
 </ul>
 <p>There are some specific arguments for each of these tools. Here is the complete reference:</p>
 </div>
-<div class="section" id="conan-tools-system-package-manager-apt">
-<span id="id2"></span><h2>conan.tools.system.package_manager.Apt<a class="headerlink" href="#conan-tools-system-package-manager-apt" title="Permalink to this headline">¶</a></h2>
-<p>Will invoke the <em>apt-get</em> command. Enabled by default for <strong>Linux</strong> with distribution
-names: <em>ubuntu</em> and <em>debian</em>.</p>
+<div class="section" id="conan-tools-system-package-manager-apk">
+<span id="id2"></span><h2>conan.tools.system.package_manager.Apk<a class="headerlink" href="#conan-tools-system-package-manager-apk" title="Permalink to this headline">¶</a></h2>
+<p>Will invoke the <em>apk</em> command. Enabled by default for <strong>Linux</strong> with distribution names:
+<em>alpine</em>.</p>
 <div class="section" id="reference">
 <h3>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="conan.tools.system.package_manager.Apk">
+<em class="property">class </em><code class="descname">Apk</code><span class="sig-paren">(</span><em>conanfile</em>, <em>_arch_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor method.
+Note that <em>Apk</em> does not support architecture names since Alpine Linux does not support
+multiarch. Therefore, the <code class="docutils literal notranslate"><span class="pre">arch_names</span></code> argument is ignored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>conanfile</strong> – the current recipe object. Always use <code class="docutils literal notranslate"><span class="pre">self</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="conan.tools.system.package_manager.Apk.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apk.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the list of packages passed as parameter are already installed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>packages</strong> – list of packages to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of packages from the packages argument that are not installed in the system.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conan.tools.system.package_manager.Apk.install">
+<code class="descname">install</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apk.install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will try to install the list of packages passed as a parameter. Its
+behaviour is affected by the value of <code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>
+<a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>packages</strong> – try to install the list of packages passed as a parameter.</li>
+<li><strong>update</strong> – try to update the package manager database before checking and installing.</li>
+<li><strong>check</strong> – check if the packages are already installed before installing them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the return code of the executed package manager command.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conan.tools.system.package_manager.Apk.install_substitutes">
+<code class="descname">install_substitutes</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apk.install_substitutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will try to call the install() method with  several lists of packages passed as a
+variable number of parameters. This is useful if, for example, the names of the
+packages are different from one distro or distro version to another. For example,
+<code class="docutils literal notranslate"><span class="pre">libxcb</span></code> for <code class="docutils literal notranslate"><span class="pre">Apt</span></code> is named <code class="docutils literal notranslate"><span class="pre">libxcb-util-dev</span></code> in Ubuntu &gt;= 15.0 and <code class="docutils literal notranslate"><span class="pre">libxcb-util0-dev</span></code>
+for other versions. You can call to:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># will install the first list of packages that succeeds in the installation</span>
+<span class="n">Apt</span><span class="o">.</span><span class="n">install_substitutes</span><span class="p">([</span><span class="s2">&quot;libxcb-util-dev&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;libxcb-util0-dev&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>packages_alternatives</strong> – try to install the list of packages passed as a parameter.</li>
+<li><strong>update</strong> – try to update the package manager database before checking and installing.</li>
+<li><strong>check</strong> – check if the packages are already installed before installing them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the return code of the executed package manager command.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="conan.tools.system.package_manager.Apk.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apk.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the system package manager database. Its behaviour is affected by
+the value of <code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>
+<a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the return code of the executed package manager update command.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<p>Alpine Linux does not support multiple architectures in the same repository, so there is
+no mapping from Conan architectures to Alpine architectures.</p>
+</div>
+</div>
+<div class="section" id="conan-tools-system-package-manager-apt">
+<span id="id3"></span><h2>conan.tools.system.package_manager.Apt<a class="headerlink" href="#conan-tools-system-package-manager-apt" title="Permalink to this headline">¶</a></h2>
+<p>Will invoke the <em>apt-get</em> command. Enabled by default for <strong>Linux</strong> with distribution
+names: <em>ubuntu</em> and <em>debian</em>.</p>
+<div class="section" id="id4">
+<h3>Reference<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Apt">
 <em class="property">class </em><code class="descname">Apt</code><span class="sig-paren">(</span><em>conanfile</em>, <em>arch_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apt" title="Permalink to this definition">¶</a></dt>
@@ -447,8 +562,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 </dd></dl>
 
 <p>You can pass the <code class="docutils literal notranslate"><span class="pre">arch_names</span></code> argument to override the default Conan mapping like this:</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">conanfile.py</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">conanfile.py</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="k">def</span> <span class="nf">system_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">apt</span> <span class="o">=</span> <span class="n">Apt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arch_names</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;&lt;conan_arch_setting&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;apt_arch_setting&quot;</span><span class="p">})</span>
@@ -470,11 +585,11 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 </div>
 </div>
 <div class="section" id="conan-tools-system-package-manager-yum">
-<span id="id3"></span><h2>conan.tools.system.package_manager.Yum<a class="headerlink" href="#conan-tools-system-package-manager-yum" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>conan.tools.system.package_manager.Yum<a class="headerlink" href="#conan-tools-system-package-manager-yum" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>yum</em> command. Enabled by default for <strong>Linux</strong> with distribution names:
 <em>pidora</em>, <em>scientific</em>, <em>xenserver</em>, <em>amazon</em>, <em>oracle</em>, <em>amzn</em> and <em>almalinux</em>.</p>
-<div class="section" id="id4">
-<h3>Reference<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Reference<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Yum">
 <em class="property">class </em><code class="descname">Yum</code><span class="sig-paren">(</span><em>conanfile</em>, <em>arch_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Yum" title="Permalink to this definition">¶</a></dt>
@@ -607,8 +722,8 @@ constructor and methods than the <a class="reference internal" href="#conan-tool
 <h2>conan.tools.system.package_manager.PacMan<a class="headerlink" href="#conan-tools-system-package-manager-pacman" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>pacman</em> command. Enabled by default for <strong>Linux</strong> with distribution
 names: <em>arch</em>, <em>manjaro</em> and when using <strong>Windows</strong> with <em>msys2</em></p>
-<div class="section" id="id5">
-<h3>Reference<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Reference<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.PacMan">
 <em class="property">class </em><code class="descname">PacMan</code><span class="sig-paren">(</span><em>conanfile</em>, <em>arch_names=None</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.PacMan" title="Permalink to this definition">¶</a></dt>
@@ -728,8 +843,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 <h2>conan.tools.system.package_manager.Zypper<a class="headerlink" href="#conan-tools-system-package-manager-zypper" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>zypper</em> command. Enabled by default for <strong>Linux</strong> with distribution
 names: <em>opensuse</em>, <em>sles</em>.</p>
-<div class="section" id="id6">
-<h3>Reference<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Reference<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Zypper">
 <em class="property">class </em><code class="descname">Zypper</code><span class="sig-paren">(</span><em>conanfile</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Zypper" title="Permalink to this definition">¶</a></dt>
@@ -836,8 +951,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 <div class="section" id="conan-tools-system-package-manager-brew">
 <h2>conan.tools.system.package_manager.Brew<a class="headerlink" href="#conan-tools-system-package-manager-brew" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>brew</em> command. Enabled by default for <strong>macOS</strong>.</p>
-<div class="section" id="id7">
-<h3>Reference<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Reference<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Brew">
 <em class="property">class </em><code class="descname">Brew</code><span class="sig-paren">(</span><em>conanfile</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Brew" title="Permalink to this definition">¶</a></dt>
@@ -944,8 +1059,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 <div class="section" id="conan-tools-system-package-manager-pkg">
 <h2>conan.tools.system.package_manager.Pkg<a class="headerlink" href="#conan-tools-system-package-manager-pkg" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>pkg</em> command. Enabled by default for <strong>Linux</strong> with distribution names: <em>freebsd</em>.</p>
-<div class="section" id="id8">
-<h3>Reference<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Reference<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Pkg">
 <em class="property">class </em><code class="descname">Pkg</code><span class="sig-paren">(</span><em>conanfile</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Pkg" title="Permalink to this definition">¶</a></dt>
@@ -1052,8 +1167,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 <div class="section" id="conan-tools-system-package-manager-pkgutil">
 <h2>conan.tools.system.package_manager.PkgUtil<a class="headerlink" href="#conan-tools-system-package-manager-pkgutil" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>pkgutil</em> command. Enabled by default for <strong>Solaris</strong>.</p>
-<div class="section" id="id9">
-<h3>Reference<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Reference<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.PkgUtil">
 <em class="property">class </em><code class="descname">PkgUtil</code><span class="sig-paren">(</span><em>conanfile</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.PkgUtil" title="Permalink to this definition">¶</a></dt>
@@ -1160,8 +1275,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
 <div class="section" id="conan-tools-system-package-manager-chocolatey">
 <h2>conan.tools.system.package_manager.Chocolatey<a class="headerlink" href="#conan-tools-system-package-manager-chocolatey" title="Permalink to this headline">¶</a></h2>
 <p>Will invoke the <em>choco</em> command. Enabled by default for <strong>Windows</strong>.</p>
-<div class="section" id="id10">
-<h3>Reference<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Reference<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="conan.tools.system.package_manager.Chocolatey">
 <em class="property">class </em><code class="descname">Chocolatey</code><span class="sig-paren">(</span><em>conanfile</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Chocolatey" title="Permalink to this definition">¶</a></dt>
@@ -1290,7 +1405,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1697,7 +1812,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

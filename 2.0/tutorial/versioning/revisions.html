@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Revisions &mdash; conan 2.0.9 documentation</title>
+  <title>Revisions &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
         <link rel="up" title="Versioning" href="../versioning.html"/>
         <link rel="next" title="Lockfiles" href="lockfiles.html"/>
         <link rel="prev" title="Version ranges" href="version_ranges.html"/>
@@ -315,6 +315,15 @@ broken, as revisions are considered immutable.</li>
 </ul>
 <p class="last">Any change in source code or in recipe should always imply a new revision.</p>
 </div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>Line Endings Issue</strong></p>
+<p class="last">Git, by default, will checkout files on Windows systems using <code class="docutils literal notranslate"><span class="pre">CRLF</span></code> line endings.
+This results in different files compared to Linux systems where files will use <code class="docutils literal notranslate"><span class="pre">LF</span></code>
+line endings. Since the files are different, the Conan recipe revision computed on
+Windows will differ from the revisions on other platforms like Linux. Please, check
+more about this issue and how to solve it in the <a class="reference internal" href="../../knowledge/faq.html#faq-different-revisions"><span class="std std-ref">FAQ dedicated section</span></a>.</p>
+</div>
 </div>
 <div class="section" id="using-revisions">
 <h2>Using revisions<a class="headerlink" href="#using-revisions" title="Permalink to this headline">¶</a></h2>
@@ -454,7 +463,7 @@ also return information of what needs to be built.)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -861,7 +870,7 @@ also return information of what needs to be built.)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

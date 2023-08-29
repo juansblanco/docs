@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan list &mdash; conan 2.0.9 documentation</title>
+  <title>conan list &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
         <link rel="up" title="Commands" href="../commands.html"/>
         <link rel="next" title="conan lock" href="lock.html"/>
         <link rel="prev" title="conan install" href="install.html"/>
@@ -362,13 +362,25 @@ Local Cache
 </pre></div>
 </div>
 </div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">...&#64;</span></code> pattern for searching only references that don’t have <em>user</em> and <em>channel</em>:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><em>list references without user and channel</em></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan list &quot;*/*@&quot;
+Local Cache
+  string-view-lite
+    string-view-lite/1.6.0
+  zlib
+    zlib/1.2.11
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="listing-recipe-revisions">
 <h2>Listing recipe revisions<a class="headerlink" href="#listing-recipe-revisions" title="Permalink to this headline">¶</a></h2>
 <p>The shortest way of listing the latest recipe revision for a recipe is using the
 <code class="docutils literal notranslate"><span class="pre">name/version&#64;user/channel</span></code> as the pattern:</p>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text"><em>list latest recipe revision</em></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><em>list latest recipe revision</em></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan list zlib/1.2.11
 Local Cache
   zlib
@@ -380,8 +392,8 @@ Local Cache
 </div>
 <p>This is equivalent to specify explicitly that you want to list the latest recipe revision
 using the <code class="docutils literal notranslate"><span class="pre">#latest</span></code> placeholder:</p>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text"><em>list latest recipe revision</em></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><em>list latest recipe revision</em></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan list zlib/1.2.11#latest
 Local Cache
   zlib
@@ -392,8 +404,8 @@ Local Cache
 </div>
 </div>
 <p>To list all recipe revisions use the <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcard:</p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text"><em>list all recipe revisions</em></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text"><em>list all recipe revisions</em></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  $ conan list &quot;zlib/1.2.11#*&quot;&quot;
   Local Cache
     zlib
@@ -412,8 +424,8 @@ Local Cache
 <h2>Listing package IDs<a class="headerlink" href="#listing-package-ids" title="Permalink to this headline">¶</a></h2>
 <p>The shortest way of listing all the package IDs belonging to the latest recipe revision is
 using <code class="docutils literal notranslate"><span class="pre">name/version&#64;user/channel:*</span></code> as the pattern:</p>
-<div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text"><em>list all package IDs for latest recipe revision</em></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text"><em>list all package IDs for latest recipe revision</em></span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  # Make sure to quote the argument
   $ conan list &quot;zlib/1.2.11:*&quot;
   Local Cache
@@ -454,8 +466,8 @@ equivalent to <code class="docutils literal notranslate"><span class="pre">zlib/
 </div>
 <p>To list all the package IDs for all the recipe revisions use the <code class="docutils literal notranslate"><span class="pre">*</span></code> wildcard in the
 revision <code class="docutils literal notranslate"><span class="pre">#</span></code> part:</p>
-<div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text"><em>list all the package IDs for all the recipe revisions</em></span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text"><em>list all the package IDs for all the recipe revisions</em></span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  # Make sure to quote the argument
   $ conan list &quot;zlib/1.2.11#*:*&quot;
   zlib
@@ -495,8 +507,8 @@ revision <code class="docutils literal notranslate"><span class="pre">#</span></
 <h2>Listing package revisions<a class="headerlink" href="#listing-package-revisions" title="Permalink to this headline">¶</a></h2>
 <p>The shortest way of listing the latest package revision for a specific recipe revision and
 package ID is using the pattern <code class="docutils literal notranslate"><span class="pre">name/version&#64;user/channel#rrev:pkgid</span></code></p>
-<div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text"><em>list latest package revision for a specific recipe revision and package ID</em></span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text"><em>list latest package revision for a specific recipe revision and package ID</em></span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  $ conan list zlib/1.2.11#8b23adc7acd6f1d6e220338a78e3a19e:fdb823f07bc228621617c6397210a5c6c4c8807b
   Local Cache
     zlib
@@ -511,8 +523,8 @@ package ID is using the pattern <code class="docutils literal notranslate"><span
 </div>
 </div>
 <p>To list all the package revisions for for the latest recipe revision:</p>
-<div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text"><em>list all the package revisions for all package-ids the latest recipe revision</em></span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text"><em>list all the package revisions for all package-ids the latest recipe revision</em></span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  # Make sure to quote the argument
   $ conan list &quot;zlib/1.2.11:*#*&quot;
   Local Cache
@@ -637,7 +649,7 @@ with the following structure:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1044,7 +1056,7 @@ with the following structure:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

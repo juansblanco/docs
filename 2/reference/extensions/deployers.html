@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deployers &mdash; conan 2.0.9 documentation</title>
+  <title>Deployers &mdash; conan 2.0.10 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.9 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
         <link rel="up" title="Extensions" href="../extensions.html"/>
         <link rel="next" title="Hooks" href="hooks.html"/>
         <link rel="prev" title="Download API" href="python_api/DownloadAPI.html"/>
@@ -262,6 +262,12 @@ This deployer will output your dependencies in a tree folder such as:</p>
 See <a class="reference internal" href="../../introduction.html#stability"><span class="std std-ref">the Conan stability</span></a> section for more information.</p>
 </div>
 </div>
+<div class="section" id="configuration">
+<h3>configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Both the <code class="docutils literal notranslate"><span class="pre">full_deploy</span></code> and the <code class="docutils literal notranslate"><span class="pre">direct_deploy</span></code> understand when the conf <code class="docutils literal notranslate"><span class="pre">tools.deployer:symlinks</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>
+to disable deployers copying symlinks. This can be convenient in systems that do not support symlinks and could fail
+if deploying packages that contain symlinks.</p>
+</div>
 </div>
 <div class="section" id="custom-deployers">
 <h2>Custom deployers<a class="headerlink" href="#custom-deployers" title="Permalink to this headline">¶</a></h2>
@@ -315,7 +321,7 @@ in this case <code class="docutils literal notranslate"><span class="pre">conan<
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 25, 2023.
+      Last updated on Aug 29, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -722,7 +728,7 @@ in this case <code class="docutils literal notranslate"><span class="pre">conan<
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.9',
+            VERSION:'2.0.10',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
