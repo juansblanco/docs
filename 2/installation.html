@@ -249,6 +249,49 @@ installation, so Conan is found in the path.</li>
 <p>The upgrade shouldn’t affect the installed packages or cache information. If the cache becomes inconsistent somehow, you may want to remove its content by deleting it (<code class="docutils literal notranslate"><span class="pre">&lt;userhome&gt;/.conan2</span></code>).</p>
 </div>
 </div>
+<div class="section" id="install-with-pipx">
+<h2>Install with pipx<a class="headerlink" href="#install-with-pipx" title="Permalink to this headline">¶</a></h2>
+<p>In certain scenarios, attempting to install with <code class="docutils literal notranslate"><span class="pre">pip</span></code> may yield the following error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>error:<span class="w"> </span>externally-managed-environment
+
+x<span class="w"> </span>This<span class="w"> </span>environment<span class="w"> </span>is<span class="w"> </span>externally<span class="w"> </span>managed
+<span class="w">    </span>To<span class="w"> </span>install<span class="w"> </span>Python<span class="w"> </span>packages<span class="w"> </span>system-wide,<span class="w"> </span>try<span class="w"> </span>apt<span class="w"> </span>install
+<span class="w">    </span>python3-xyz,<span class="w"> </span>where<span class="w"> </span>xyz<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>package<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>trying<span class="w"> </span>to
+<span class="w">    </span>install.
+...
+</pre></div>
+</div>
+<p>This is because some modern Linux distributions have started marking their Python
+installations as “externally managed”, which means that the system’s package manager is
+responsible for managing Python packages. Installing packages globally or even in the user
+space can interfere with system operations and potentially break system tools (check
+<a class="reference external" href="https://peps.python.org/pep-0668/">PEP-668</a> for more detailed information).</p>
+<p>For those cases, it’s recommended to use <code class="docutils literal notranslate"><span class="pre">pipx</span></code> to install Conan. <code class="docutils literal notranslate"><span class="pre">pipx</span></code> creates a virtual
+environment for each Python application, ensuring that dependencies do not conflict. The
+advantage is that it isolates Conan and its dependencies from the system Python and avoids
+potential conflicts with system packages while providing a clean environment for Conan to
+run.</p>
+<p>To install Conan with <code class="docutils literal notranslate"><span class="pre">pipx</span></code>:</p>
+<ol class="arabic simple">
+<li>Ensure <code class="docutils literal notranslate"><span class="pre">pipx</span></code> is installed on your system. If it isn’t, check the installation
+guidelines <a class="reference external" href="https://pypa.github.io/pipx/installation/">in the pipx documentation</a>. For
+Debian-based distributions, you can install <code class="docutils literal notranslate"><span class="pre">pipx</span></code> using the system package manager:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>pipx
+$<span class="w"> </span>pipx<span class="w"> </span>ensurepath
+</pre></div>
+</div>
+<p>(Note: The package name might vary depending on the distribution)</p>
+<ol class="arabic simple" start="2">
+<li>Restart your terminal and then install Conan using <code class="docutils literal notranslate"><span class="pre">pipx</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pipx<span class="w"> </span>install<span class="w"> </span>conan
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Now you can use Conan as you typically would.</li>
+</ol>
+</div>
 <div class="section" id="use-a-system-installer-or-create-a-self-contained-executable">
 <h2>Use a system installer or create a self-contained executable<a class="headerlink" href="#use-a-system-installer-or-create-a-self-contained-executable" title="Permalink to this headline">¶</a></h2>
 <p>There will be a number of existing installers in <a class="reference external" href="https://conan.io/downloads">Conan downloads</a> for OSX Brew, Debian, Windows, Linux Arch, that will not require Python first.</p>
@@ -317,7 +360,7 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Aug 29, 2023.
+      Last updated on Sep 07, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
