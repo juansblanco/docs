@@ -116,7 +116,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="#changes-to-expect">Changes to expect</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#json-output-in-2-x-commands">JSON output in 2.X commands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conan-install">conan install</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">conan install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conan-build">conan build</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conan-create">conan create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conan-graph-info">conan graph info</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#conan-search">conan search</a></li>
@@ -276,8 +276,8 @@ Remember that in Conan 1.X you have to specify the build profile or activate the
 </div>
 <p>In addition the <code class="docutils literal notranslate"><span class="pre">--install-folder</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">--output-folder</span></code>. You might need to provide both arguments in Conan 1.X as some legacy generated files (<code class="docutils literal notranslate"><span class="pre">conaninfo.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">conanbuildinfo.txt</span></code>, etc) are not affected by <code class="docutils literal notranslate"><span class="pre">--output-folder</span></code>.</p>
 </div>
-<div class="section" id="id1">
-<h3>conan install<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="conan-build">
+<h3>conan build<a class="headerlink" href="#conan-build" title="Permalink to this headline">¶</a></h3>
 <p>In addition the <code class="docutils literal notranslate"><span class="pre">--build-folder</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">--output-folder</span></code>. Still in most cases you shouldn’t be using it, but relying on the defined <cite>layout()</cite> in the recipe.</p>
 </div>
 <div class="section" id="conan-create">
@@ -370,14 +370,14 @@ A valid reference pattern contains the <code class="docutils literal notranslate
 <ul class="simple">
 <li>The <code class="docutils literal notranslate"><span class="pre">--build</span></code> argument when referring to a package:</li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text"><strong>From:</strong></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><strong>From:</strong></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--build<span class="w"> </span>zlib
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text"><strong>To:</strong></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><strong>To:</strong></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--build<span class="w"> </span>zlib/*
 <span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--build<span class="w"> </span>zlib/1.2.11
 <span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--build<span class="w"> </span>zlib/1.*
@@ -387,14 +387,14 @@ A valid reference pattern contains the <code class="docutils literal notranslate
 <ul class="simple">
 <li>The <code class="docutils literal notranslate"><span class="pre">--options</span></code> and <code class="docutils literal notranslate"><span class="pre">--settings</span></code> arguments when used scoped:</li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text"><strong>From:</strong></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><strong>From:</strong></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span>zlib:arch<span class="o">=</span>x86<span class="w"> </span>-o<span class="w"> </span>zlib:shared<span class="o">=</span>True
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text"><strong>To:</strong></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><strong>To:</strong></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span>zlib/*:arch<span class="o">=</span>x86<span class="w"> </span>-o<span class="w"> </span>zlib/*:shared<span class="o">=</span>True
 <span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-s<span class="w"> </span>zlib/1.2.11@user/channel:arch<span class="o">=</span>x86<span class="w"> </span>-o<span class="w"> </span>zlib/1.2.11:shared<span class="o">=</span>True
 </pre></div>
@@ -455,7 +455,7 @@ Refer to the <a class="reference external" href="https://docs.conan.io/2/referen
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2022, JFrog.
-      Last updated on Aug 07, 2023.
+      Last updated on Sep 08, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
