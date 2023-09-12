@@ -464,11 +464,37 @@ static, and this is the linkage that should be used if consumers don’t specify
 otherwise.</li>
 </ul>
 </div>
+<div class="section" id="introducing-the-concept-of-package-id">
+<h2>Introducing the concept of Package ID<a class="headerlink" href="#introducing-the-concept-of-package-id" title="Permalink to this headline">¶</a></h2>
+<p>When consuming packages like Zlib with different <cite>settings</cite> and <cite>options</cite>, you might
+wonder how Conan determines which binary to retrieve from the remote. The answer lies in
+the concept of the <cite>package_id</cite>.</p>
+<p>The <cite>package_id</cite> is an identifier that Conan uses to determine the binary compatibility of
+packages. It is computed based on several factors, including the package’s <cite>settings</cite>,
+<cite>options</cite>, and dependencies. When you modify any of these factors, Conan computes a new
+<cite>package_id</cite> to reference the corresponding binary.</p>
+<p>Here’s a breakdown of the process:</p>
+<ol class="arabic simple">
+<li><strong>Determine Settings and Options</strong>: Conan first retrieves the user’s input settings and
+options. These can come from the command line or profiles like
+<cite>–settings=build_type=Debug</cite> or <cite>–profile=debug</cite>.</li>
+<li><strong>Compute the Package ID</strong>: With the current values for <cite>settings</cite>, <cite>options</cite>, and
+dependencies, Conan computes a hash. This hash serves as the <cite>package_id</cite>, representing
+the binary package’s unique identity.</li>
+<li><strong>Fetch the Binary</strong>: Conan then checks its cache or the specified remote for a binary
+package with the computed <cite>package_id</cite>. If it finds a match, it retrieves that binary.
+If not, Conan can build the package from source or indicate that the binary is missing.</li>
+</ol>
+<p>In the context of our tutorial, when we consumed Zlib with different <cite>settings</cite> and
+<cite>options</cite>, Conan used the <cite>package_id</cite> to ensure that it fetched the correct binary that
+matched our specified configuration.</p>
+</div>
 <div class="section" id="read-more">
 <h2>Read more<a class="headerlink" href="#read-more" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="../../reference/tools/env/virtualrunenv.html#conan-tools-env-virtualrunenv"><span class="std std-ref">VirtualRunEnv reference</span></a></li>
 <li><a class="reference internal" href="cross_building_with_conan.html#consuming-packages-cross-building-with-conan"><span class="std std-ref">Cross-compiling using –profile:build and –profile:host</span></a></li>
+<li><a class="reference internal" href="../creating_packages/configure_options_settings.html#creating-packages-configure-options-settings"><span class="std std-ref">Conan packages binary compatibility: the package ID</span></a></li>
 <li>Installing configurations with conan config install</li>
 <li>VS Multi-config</li>
 <li>Example about how settings and options influence the package id</li>
@@ -500,7 +526,7 @@ otherwise.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 07, 2023.
+      Last updated on Sep 12, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
