@@ -314,15 +314,15 @@ have the option of creating the package as a shared or static library, being sta
 </ul>
 </li>
 <li>The <code class="docutils literal notranslate"><span class="pre">exports_sources</span></code> attribute defines which sources are exported together with the recipe, these
-sources become part of the package recipe (there are other mechanisms that don’t do this, will be explained
-later.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">config_options()</span></code> method (together with <code class="docutils literal notranslate"><span class="pre">configure()</span></code> one) allows to fine tune the binary configuration
-model, for example, in Windows there is no <code class="docutils literal notranslate"><span class="pre">fPIC</span></code> option, so it can be removed.</li>
+sources become part of the package recipe (there are other mechanisms that don’t do this, which will be explained
+later).</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">config_options()</span></code> method (together with <code class="docutils literal notranslate"><span class="pre">configure()</span></code>) allows to fine tune the binary configuration
+model. For example, in Windows there is no <code class="docutils literal notranslate"><span class="pre">fPIC</span></code> option, so it can be removed.</li>
 <li>The <code class="docutils literal notranslate"><span class="pre">generate()</span></code> method prepares the build of the package from source. In this case, it could be simplified
 to an attribute <code class="docutils literal notranslate"><span class="pre">generators</span> <span class="pre">=</span> <span class="pre">&quot;CMakeToolchain&quot;</span></code>, but it is left to show this important method. In this case,
 the execution of <code class="docutils literal notranslate"><span class="pre">CMakeToolchain</span></code> <code class="docutils literal notranslate"><span class="pre">generate()</span></code> method will create a <em>conan_toolchain.cmake</em> file that maps
 the Conan <code class="docutils literal notranslate"><span class="pre">settings</span></code> and <code class="docutils literal notranslate"><span class="pre">options</span></code> to CMake syntax.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method uses the <code class="docutils literal notranslate"><span class="pre">CMake</span></code> wrapper to call CMake commands, it is a thin layer that will manage
+<li>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method uses the <code class="docutils literal notranslate"><span class="pre">CMake</span></code> wrapper to call CMake commands. It is a thin layer that will manage
 to pass in this case the <code class="docutils literal notranslate"><span class="pre">-DCMAKE_TOOLCHAIN_FILE=&lt;path&gt;/conan_toolchain.cmake</span></code> argument, plus other possible arguments,
 like <code class="docutils literal notranslate"><span class="pre">-DCMAKE_BUILD_TYPE=&lt;config&gt;</span></code> if necessary. It will configure the project and build it from source. The actual
 arguments that will be used are obtained from a generated <code class="docutils literal notranslate"><span class="pre">CMakePresets.json</span></code> file.</li>
@@ -448,7 +448,7 @@ Existing<span class="w"> </span>packages<span class="w"> </span><span class="k">
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2022, JFrog.
-      Last updated on Sep 08, 2023.
+      Last updated on Sep 12, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
