@@ -271,7 +271,7 @@ set_target_properties(hello PROPERTIES PUBLIC_HEADER &quot;include/hello.h&quot;
 </div>
 <p>Let’s build our package again and pay attention to the lines regarding the
 packaging of files in the Conan local cache:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span>None
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span>
 ...
 hello/1.0:<span class="w"> </span>Build<span class="w"> </span>folder<span class="w"> </span>/Users/user/.conan2/p/tmp/b5857f2e70d1b2fd/b/build/Release
 hello/1.0:<span class="w"> </span>Generated<span class="w"> </span>conaninfo.txt
@@ -321,7 +321,7 @@ file to the <em>package folder</em>.</p>
 </div>
 <p>Let’s build our package one more time and pay attention to the lines regarding the
 packaging of files in the Conan local cache:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span>None
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span>
 ...
 hello/1.0:<span class="w"> </span>Build<span class="w"> </span>folder<span class="w"> </span>/Users/user/.conan2/p/tmp/222db0532bba7cbc/b/build/Release
 hello/1.0:<span class="w"> </span>Generated<span class="w"> </span>conaninfo.txt
@@ -404,7 +404,7 @@ absolute links into relative paths and make the package relocatable.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 13, 2023.
+      Last updated on Sep 15, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 

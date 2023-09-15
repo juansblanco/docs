@@ -306,7 +306,7 @@ ID</strong>. The package ID is just a way to convert a set of settings, options 
 about the requirements of the package to a unique identifier.</p>
 <p>Let’s build our package for <em>Release</em> and <em>Debug</em> configurations and check
 the generated binaries package IDs.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Release<span class="w"> </span>-tf<span class="o">=</span>None<span class="w"> </span><span class="c1"># -tf=None will skip buildiing the test_package</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Release<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip buildiing the test_package</span>
 ...
 <span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
 <span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
@@ -329,7 +329,7 @@ hello/1.0<span class="w"> </span>package<span class="o">()</span>:<span class="w
 hello/1.0:<span class="w"> </span>Full<span class="w"> </span>package<span class="w"> </span>reference:<span class="w"> </span>hello/1.0#e6b11fb0cb64e3777f8d62f4543cd6b3:738feca714b7251063cc51448da0cf4811424e7c#3bd9faedc711cbb4fdf10b295268246e
 hello/1.0:<span class="w"> </span>Package<span class="w"> </span>folder<span class="w"> </span>/Users/user/.conan2/p/5c497cbb5421cbda/p
 
-$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Debug<span class="w"> </span>-tf<span class="o">=</span>None<span class="w"> </span><span class="c1"># -tf=None will skip buildiing the test_package</span>
+$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Debug<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip buildiing the test_package</span>
 ...
 <span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
 <span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
@@ -387,7 +387,7 @@ even if you define them, the resulting package ID will be the same. You can chec
 behaviour, for example with the fPIC option that is deleted when we build with the
 option <code class="docutils literal notranslate"><span class="pre">shared=True</span></code>. Regardless of the value you pass for the fPIC option the generated
 package ID will be the same for the <strong>hello/1.0</strong> binary:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-o<span class="w"> </span><span class="nv">shared</span><span class="o">=</span>True<span class="w"> </span>-o<span class="w"> </span><span class="nv">fPIC</span><span class="o">=</span>True<span class="w"> </span>-tf<span class="o">=</span>None
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-o<span class="w"> </span><span class="nv">shared</span><span class="o">=</span>True<span class="w"> </span>-o<span class="w"> </span><span class="nv">fPIC</span><span class="o">=</span>True<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span>
 ...
 hello/1.0<span class="w"> </span>package<span class="o">()</span>:<span class="w"> </span>Packaged<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;.h&#39;</span><span class="w"> </span>file:<span class="w"> </span>hello.h
 hello/1.0<span class="w"> </span>package<span class="o">()</span>:<span class="w"> </span>Packaged<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;.dylib&#39;</span><span class="w"> </span>file:<span class="w"> </span>libhello.dylib
@@ -396,7 +396,7 @@ hello/1.0:<span class="w"> </span>Created<span class="w"> </span>package<span cl
 hello/1.0:<span class="w"> </span>Full<span class="w"> </span>package<span class="w"> </span>reference:<span class="w"> </span>hello/1.0#e6b11fb0cb64e3777f8d62f4543cd6b3:2a899fd0da3125064bf9328b8db681cd82899d56#f0d1385f4f90ae465341c15740552d7e
 hello/1.0:<span class="w"> </span>Package<span class="w"> </span>folder<span class="w"> </span>/Users/user/.conan2/p/8a55286c6595f662/p
 
-$<span class="w"> </span>conan<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-o<span class="w"> </span><span class="nv">shared</span><span class="o">=</span>True<span class="w"> </span>-o<span class="w"> </span><span class="nv">fPIC</span><span class="o">=</span>False<span class="w"> </span>-tf<span class="o">=</span>None
+$<span class="w"> </span>conan<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-o<span class="w"> </span><span class="nv">shared</span><span class="o">=</span>True<span class="w"> </span>-o<span class="w"> </span><span class="nv">fPIC</span><span class="o">=</span>False<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span>
 ...
 --------<span class="w"> </span>Computing<span class="w"> </span>dependency<span class="w"> </span>graph<span class="w"> </span>--------
 Graph<span class="w"> </span>root
@@ -490,7 +490,7 @@ more detail.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 13, 2023.
+      Last updated on Sep 15, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 

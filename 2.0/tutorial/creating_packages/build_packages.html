@@ -368,7 +368,7 @@ testing.</li>
 </div>
 </div>
 <p>Now that we have gone through all the changes in the code, let’s try them out:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span>None
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span>
 ...
 <span class="o">[</span><span class="w"> </span><span class="m">25</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
 <span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
@@ -396,13 +396,13 @@ testing.</li>
 </div>
 <p>As you can see, the tests were built and run. Let’s use now the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code>
 configuration in the command line to skip the test building and running:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>-c<span class="w"> </span>tools.build:skip_test<span class="o">=</span>True<span class="w"> </span>-tf<span class="o">=</span>None
-...
-<span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
-<span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
-<span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Built<span class="w"> </span>target<span class="w"> </span>hello
-hello/1.0:<span class="w"> </span>Package<span class="w"> </span><span class="s1">&#39;82b6c0c858e739929f74f59c25c187b927d514f3&#39;</span><span class="w"> </span>built
-...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>-c<span class="w"> </span>tools.build:skip_test<span class="o">=</span>True<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">[ 50%] Building CXX object CMakeFiles/hello.dir/src/hello.cpp.o</span>
+<span class="s2">[100%] Linking CXX static library libhello.a</span>
+<span class="s2">[100%] Built target hello</span>
+<span class="s2">hello/1.0: Package &#39;82b6c0c858e739929f74f59c25c187b927d514f3&#39; built</span>
+<span class="s2">...</span>
 </pre></div>
 </div>
 <p>You can see now that only the library target was built and that no tests were built or
@@ -521,7 +521,7 @@ CMake and in Linux and MacOS using Autotools. This can be easily handled in the
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 13, 2023.
+      Last updated on Sep 15, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 

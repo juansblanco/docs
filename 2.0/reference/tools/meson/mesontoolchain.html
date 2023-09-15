@@ -509,26 +509,38 @@ tools.android:ndk_path=/my/path/to/NDK
 <dl class="attribute">
 <dt id="conan.tools.meson.MesonToolchain.c">
 <code class="descname">c</code><em class="property"> = None</em><a class="headerlink" href="#conan.tools.meson.MesonToolchain.c" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">c</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CC</span></code> build environment value</p>
+<dd><p>Sets the Meson <code class="docutils literal notranslate"><span class="pre">c</span></code> variable, defaulting to the <code class="docutils literal notranslate"><span class="pre">CC</span></code> build environment value.
+If provided as a blank-separated string, it will be transformed into a list.
+Otherwise, it remains a single string.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="conan.tools.meson.MesonToolchain.cpp">
 <code class="descname">cpp</code><em class="property"> = None</em><a class="headerlink" href="#conan.tools.meson.MesonToolchain.cpp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">cpp</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CXX</span></code> build environment value</p>
+<dd><p>Sets the Meson <code class="docutils literal notranslate"><span class="pre">cpp</span></code> variable, defaulting to the <code class="docutils literal notranslate"><span class="pre">CXX</span></code> build environment value.
+If provided as a blank-separated string, it will be transformed into a list.
+Otherwise, it remains a single string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="conan.tools.meson.MesonToolchain.ld">
+<code class="descname">ld</code><em class="property"> = None</em><a class="headerlink" href="#conan.tools.meson.MesonToolchain.ld" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the Meson <code class="docutils literal notranslate"><span class="pre">ld</span></code> variable, defaulting to the <code class="docutils literal notranslate"><span class="pre">LD</span></code> build environment value.
+If provided as a blank-separated string, it will be transformed into a list.
+Otherwise, it remains a single string.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="conan.tools.meson.MesonToolchain.c_ld">
 <code class="descname">c_ld</code><em class="property"> = None</em><a class="headerlink" href="#conan.tools.meson.MesonToolchain.c_ld" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">c_ld</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CC_LD</span></code> or <code class="docutils literal notranslate"><span class="pre">LD</span></code> build
+<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">c_ld</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CC_LD</span></code>
 environment value</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="conan.tools.meson.MesonToolchain.cpp_ld">
 <code class="descname">cpp_ld</code><em class="property"> = None</em><a class="headerlink" href="#conan.tools.meson.MesonToolchain.cpp_ld" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">cpp_ld</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CXX_LD</span></code> or <code class="docutils literal notranslate"><span class="pre">LD</span></code> build
+<dd><p>Defines the Meson <code class="docutils literal notranslate"><span class="pre">cpp_ld</span></code> variable. Defaulted to <code class="docutils literal notranslate"><span class="pre">CXX_LD</span></code>
 environment value</p>
 </dd></dl>
 
@@ -679,7 +691,7 @@ If Windows OS, it will be created a <code class="docutils literal notranslate"><
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 13, 2023.
+      Last updated on Sep 15, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
