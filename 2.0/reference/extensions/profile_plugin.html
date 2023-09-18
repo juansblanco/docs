@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Profile plugin &mdash; conan 2.0.10 documentation</title>
+  <title>Profile plugin &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Extensions" href="../extensions.html"/>
         <link rel="next" title="Command wrapper" href="command_wrapper.html"/>
         <link rel="prev" title="Binary compatibility" href="binary_compatibility.html"/>
@@ -229,7 +229,7 @@ checking and modifying it.</p>
 <p>This plugin is located in the <code class="docutils literal notranslate"><span class="pre">extensions/plugins/profile.py</span></code> cache folder.</p>
 <p>This <code class="docutils literal notranslate"><span class="pre">profile.py</span></code> contains a default implementation that does:</p>
 <ul class="simple">
-<li>Will try to define <code class="docutils literal notranslate"><span class="pre">compiler.runtime_type</span></code> for <code class="docutils literal notranslate"><span class="pre">msvc</span></code> compiler if it is not defined, and it will define it to match the <code class="docutils literal notranslate"><span class="pre">settings.build_type</span></code>.
+<li>Will try to define <code class="docutils literal notranslate"><span class="pre">compiler.runtime_type</span></code> for <code class="docutils literal notranslate"><span class="pre">msvc</span></code> and <code class="docutils literal notranslate"><span class="pre">clang</span></code> compilers (in Windows) if it is not defined, and it will define it to match the <code class="docutils literal notranslate"><span class="pre">settings.build_type</span></code>.
 That allow users to let it undefined in profiles, and switch it conveniently in command line just with <code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">build_type=Debug</span></code></li>
 <li>Will check the <code class="docutils literal notranslate"><span class="pre">compiler.cppstd</span></code> value if defined to validate if the current compiler version has support for it. For example, if a developer
 tries to use <code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">compiler=gcc</span> <span class="pre">-s</span> <span class="pre">compiler.version=5</span> <span class="pre">-s</span> <span class="pre">compiler.cppstd=20</span></code>, it will raise an error.</li>
@@ -280,7 +280,7 @@ tries to use <code class="docutils literal notranslate"><span class="pre">-s</sp
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -693,7 +693,7 @@ tries to use <code class="docutils literal notranslate"><span class="pre">-s</sp
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

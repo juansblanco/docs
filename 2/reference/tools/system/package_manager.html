@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan.tools.system.package_manager &mdash; conan 2.0.10 documentation</title>
+  <title>conan.tools.system.package_manager &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.system" href="../system.html"/>
         <link rel="next" title="conan.tools.microsoft" href="../microsoft.html"/>
         <link rel="prev" title="conan.tools.system" href="../system.html"/>
@@ -135,6 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="../scm.html">conan.tools.scm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../layout.html">conan.tools.layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intel.html">conan.tools.intel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../scons.html">conan.tools.scons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../android.html">conan.tools.android</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cpp_info.html">conan.tools.CppInfo</a></li>
 </ul>
@@ -280,7 +281,7 @@ system package manager. They take the same form for all of the package managers 
 <em>Apt</em> that also accepts the <em>recommends</em> argument for the <a class="reference internal" href="#conan-tools-system-package-manager-apt"><span class="std std-ref">install
 method</span></a>.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">install(self,</span> <span class="pre">packages,</span> <span class="pre">update=False,</span> <span class="pre">check=False):</span></code> try to install
+<li><code class="docutils literal notranslate"><span class="pre">install(self,</span> <span class="pre">packages,</span> <span class="pre">update=False,</span> <span class="pre">check=True):</span></code> try to install
 the list of packages passed as a parameter. If the parameter <code class="docutils literal notranslate"><span class="pre">check</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> it
 will check if those packages are already installed before installing them. If the
 parameter <code class="docutils literal notranslate"><span class="pre">update</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> it will try to update the package manager database
@@ -1405,7 +1406,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1818,7 +1819,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

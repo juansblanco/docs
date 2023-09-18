@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CMakeToolchain &mdash; conan 2.0.10 documentation</title>
+  <title>CMakeToolchain &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.cmake" href="../cmake.html"/>
         <link rel="next" title="CMake" href="cmake.html"/>
         <link rel="prev" title="CMakeDeps" href="cmakedeps.html"/>
@@ -138,6 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="../scm.html">conan.tools.scm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../layout.html">conan.tools.layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intel.html">conan.tools.intel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../scons.html">conan.tools.scons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../android.html">conan.tools.android</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cpp_info.html">conan.tools.CppInfo</a></li>
 </ul>
@@ -559,11 +560,39 @@ to that location.</li>
 </ul>
 <div class="section" id="customizing-the-content-blocks">
 <h3>Customizing the content blocks<a class="headerlink" href="#customizing-the-content-blocks" title="Permalink to this headline">¶</a></h3>
-<p>Every block can be customized in different ways:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove an existing block</span>
+<p>Every block can be customized in different ways (recall to call <code class="docutils literal notranslate"><span class="pre">tc.generate()</span></code> after the customization):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># tc.generate() should be called at the end of every one</span>
+
+<span class="c1"># remove an existing block, the generated conan_toolchain.cmake</span>
+<span class="c1"># will not contain code for that block at all</span>
 <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">tc</span> <span class="o">=</span> <span class="n">CMakeToolchain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
     <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;generic_system&quot;</span><span class="p">)</span>
+
+<span class="c1"># remove several blocks</span>
+<span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">tc</span> <span class="o">=</span> <span class="n">CMakeToolchain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;generic_system&quot;</span><span class="p">,</span> <span class="s2">&quot;cmake_flags_init&quot;</span><span class="p">)</span>
+
+<span class="c1"># keep one block, remove all the others</span>
+<span class="c1"># If you want to generate conan_toolchain.cmake with only that</span>
+<span class="c1"># block</span>
+<span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">tc</span> <span class="o">=</span> <span class="n">CMakeToolchain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;generic_system&quot;</span><span class="p">)</span>
+
+<span class="c1"># keep several blocks, remove the other blocks</span>
+<span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">tc</span> <span class="o">=</span> <span class="n">CMakeToolchain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;generic_system&quot;</span><span class="p">,</span> <span class="s2">&quot;cmake_flags_init&quot;</span><span class="p">)</span>
+
+<span class="c1"># iterate blocks</span>
+<span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">tc</span> <span class="o">=</span> <span class="n">CMakeToolchain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">block_name</span> <span class="ow">in</span> <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="c1"># do something with block_name</span>
+    <span class="k">for</span> <span class="n">block_name</span><span class="p">,</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">tc</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># do something with block_name and block</span>
 
 <span class="c1"># modify the template of an existing block</span>
 <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -729,7 +758,7 @@ follows:<ul>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1142,7 +1171,7 @@ follows:<ul>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

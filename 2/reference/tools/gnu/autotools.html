@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Autotools &mdash; conan 2.0.10 documentation</title>
+  <title>Autotools &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.gnu" href="../gnu.html"/>
         <link rel="next" title="MakeDeps" href="makedeps.html"/>
         <link rel="prev" title="AutotoolsToolchain" href="autotoolstoolchain.html"/>
@@ -140,6 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="../scm.html">conan.tools.scm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../layout.html">conan.tools.layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intel.html">conan.tools.intel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../scons.html">conan.tools.scons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../android.html">conan.tools.android</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cpp_info.html">conan.tools.CppInfo</a></li>
 </ul>
@@ -403,8 +404,8 @@ Autotools behaves by default, you would have a library storing an <code class="d
 pointing to a folder that does not exist in your current machine so you would get linker
 errors when building.</p>
 </div>
-<div class="section" id="how-to-adress-this-problem-in-conan">
-<h3>How to adress this problem in Conan<a class="headerlink" href="#how-to-adress-this-problem-in-conan" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-address-this-problem-in-conan">
+<h3>How to address this problem in Conan<a class="headerlink" href="#how-to-address-this-problem-in-conan" title="Permalink to this headline">¶</a></h3>
 <p>The only thing Conan can do to make these shared libraries relocatable is to patch the
 built binaries after installation. To do this, when using the <code class="docutils literal notranslate"><span class="pre">Autotools</span></code> build helper
 and after running the Makefile’s <code class="docutils literal notranslate"><span class="pre">install()</span></code> step, you can use the
@@ -474,7 +475,7 @@ when building.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -887,7 +888,7 @@ when building.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

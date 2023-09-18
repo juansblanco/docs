@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>package_id() &mdash; conan 2.0.10 documentation</title>
+  <title>package_id() &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="Methods" href="../methods.html"/>
         <link rel="next" title="package_info()" href="package_info.html"/>
         <link rel="prev" title="package()" href="package.html"/>
@@ -146,6 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l4"><a class="reference internal" href="validate_build.html">validate_build()</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../running_and_output.html">Running and output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../conanfile_txt.html">conanfile.txt</a></li>
@@ -362,6 +363,18 @@ If we are creating a package for a tool, to be used as a <code class="docutils l
 </pre></div>
 </div>
 <p>Although this can be achieved for all recipes without the <code class="docutils literal notranslate"><span class="pre">package_id()</span></code> method, using the <code class="docutils literal notranslate"><span class="pre">tools.info.package_id:confs</span> <span class="pre">=</span> <span class="pre">[&quot;user.myconf:myitem&quot;]</span></code> configuration.</p>
+<p><strong>Using regex patterns:</strong>
+You can use regex patterns in the <cite>tools.info.package_id:confs</cite>. This means that instead
+of specifying each individual configuration item, you can use a regex pattern to match
+multiple configurations. This is particularly useful when dealing with a large number of
+configurations or when configurations follow a predictable naming pattern. For instance:</p>
+<ul class="simple">
+<li>tools.info.package_id:confs=[<cite>user.myconf:myitem*</cite>] matches all configurations that start in <cite>user.myconf:myitem</cite>.</li>
+<li>tools.info.package_id:confs=[<cite>.*</cite>] matches all configurations.</li>
+<li>tools.info.package_id:confs=[<cite>tools..*</cite>] matches configurations starting with “tools.”.</li>
+<li>tools.info.package_id:confs=[<cite>.*cmake</cite>] matches configurations ending with “cmake”.</li>
+<li>tools.info.package_id:confs=[<cite>(tools.deploy|core)</cite>] matches configurations starting with “tools.deploy” or “core”.</li>
+</ul>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">See <a class="reference internal" href="../../../tutorial/creating_packages/other_types_of_packages/header_only_packages.html#creating-packages-other-header-only"><span class="std std-ref">the tutorial about header-only packages</span></a> for explanations about the <code class="docutils literal notranslate"><span class="pre">package_id()</span></code> method.</p>
@@ -393,7 +406,7 @@ If we are creating a package for a tool, to be used as a <code class="docutils l
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -806,7 +819,7 @@ If we are creating a package for a tool, to be used as a <code class="docutils l
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

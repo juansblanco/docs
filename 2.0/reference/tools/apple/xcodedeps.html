@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>XcodeDeps &mdash; conan 2.0.10 documentation</title>
+  <title>XcodeDeps &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.apple" href="../apple.html"/>
         <link rel="next" title="XcodeToolchain" href="xcodetoolchain.html"/>
         <link rel="prev" title="conan.tools.apple" href="../apple.html"/>
@@ -141,6 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l3"><a class="reference internal" href="../scm.html">conan.tools.scm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../layout.html">conan.tools.layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intel.html">conan.tools.intel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../scons.html">conan.tools.scons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../android.html">conan.tools.android</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cpp_info.html">conan.tools.CppInfo</a></li>
 </ul>
@@ -301,7 +302,7 @@ case). The above commands generate the following files:</p>
 <p>The first <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">install</span></code> with the default <em>Release</em> and <em>x86_64</em> configuration generates:</p>
 <ul class="simple">
 <li><em>conan_libpng_libpng_release_x86_64.xcconfig</em>: declares variables with conditional logic to be considered only for the active configuration in <em>Xcode</em> or the one passed by command line to <em>xcodebuild</em>.</li>
-<li><em>conan_libpng_libpng.xcconfig</em>: includes <em>conan_libpng_libpng_release_x86_64.xcconfig</em> and declares the following <em>Xcode</em> build settings: <code class="docutils literal notranslate"><span class="pre">HEADER_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">GCC_PREPROCESSOR_DEFINITIONS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_CFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_CPLUSPLUSFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">FRAMEWORK_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">LIBRARY_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_LDFLAGS</span></code>. It also includes the generated <em>xcconfig</em> files for transitive dependencies (<em>conan_zlib_zlib.xcconfig</em> in this case).</li>
+<li><em>conan_libpng_libpng.xcconfig</em>: includes <em>conan_libpng_libpng_release_x86_64.xcconfig</em> and declares the following <em>Xcode</em> build settings: <code class="docutils literal notranslate"><span class="pre">SYSTEM_HEADER_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">GCC_PREPROCESSOR_DEFINITIONS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_CFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_CPLUSPLUSFLAGS</span></code>, <code class="docutils literal notranslate"><span class="pre">FRAMEWORK_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">LIBRARY_SEARCH_PATHS</span></code>, <code class="docutils literal notranslate"><span class="pre">OTHER_LDFLAGS</span></code>. It also includes the generated <em>xcconfig</em> files for transitive dependencies (<em>conan_zlib_zlib.xcconfig</em> in this case).</li>
 <li><em>conan_libpng.xcconfig</em>: in this case it only includes <em>conan_libpng_libpng.xcconfig</em>, but in the case that the required package has components, this file will include all of the components of the package.</li>
 <li>Same 3 files will be generated for each dependency in the graph. In this case, as <em>zlib</em> is a dependency of <em>libpng</em> it will generate: <em>conan_zlib_zlib_release_x86_64.xcconfig</em>, <em>conan_zlib_zlib.xcconfig</em> and <em>conan_zlib.xcconfig</em>.</li>
 <li><em>conandeps.xcconfig</em>: configuration files including all direct dependencies, in this case, it just includes <code class="docutils literal notranslate"><span class="pre">conan_libpng.xcconfig</span></code>.</li>
@@ -363,7 +364,7 @@ option:</p>
 </pre></div>
 </div>
 <p>This will manage to generate new <em>.xcconfig</em> files for this custom configuration, and when you switch
-to this configuration in the IDE, the build system will take the correct values depending wether we
+to this configuration in the IDE, the build system will take the correct values depending whether we
 want to link with shared or static libraries.</p>
 </div>
 </div>
@@ -391,7 +392,7 @@ want to link with shared or static libraries.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -804,7 +805,7 @@ want to link with shared or static libraries.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

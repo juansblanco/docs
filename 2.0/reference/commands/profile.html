@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan profile &mdash; conan 2.0.10 documentation</title>
+  <title>conan profile &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Commands" href="../commands.html"/>
         <link rel="next" title="conan remove" href="remove.html"/>
         <link rel="prev" title="conan lock merge" href="lock/merge.html"/>
@@ -358,54 +358,56 @@ optional arguments:
 <div class="section" id="conan-profile-show">
 <h2>conan profile show<a class="headerlink" href="#conan-profile-show" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan profile show -h
-usage: conan profile show [-h] [-v [V]] [-o OPTIONS_HOST]
-                          [-o:b OPTIONS_BUILD] [-o:h OPTIONS_HOST]
-                          [-pr PROFILE_HOST] [-pr:b PROFILE_BUILD]
-                          [-pr:h PROFILE_HOST] [-s SETTINGS_HOST]
-                          [-s:b SETTINGS_BUILD] [-s:h SETTINGS_HOST]
-                          [-c CONF_HOST] [-c:b CONF_BUILD] [-c:h CONF_HOST]
+usage: conan profile show [-h] [-f FORMAT] [-v [V]] [-o OPTIONS_HOST]
+                      [-o:b OPTIONS_BUILD] [-o:h OPTIONS_HOST]
+                      [-pr PROFILE_HOST] [-pr:b PROFILE_BUILD]
+                      [-pr:h PROFILE_HOST] [-s SETTINGS_HOST]
+                      [-s:b SETTINGS_BUILD] [-s:h SETTINGS_HOST]
+                      [-c CONF_HOST] [-c:b CONF_BUILD] [-c:h CONF_HOST]
 
 Show aggregated profiles from the passed arguments.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -v [V]                Level of detail of the output. Valid options from less
+-h, --help            show this help message and exit
+-f FORMAT, --format FORMAT
+                        Select the output format: json
+-v [V]                Level of detail of the output. Valid options from less
                         verbose to more verbose: -vquiet, -verror, -vwarning,
                         -vnotice, -vstatus, -v or -vverbose, -vv or -vdebug,
                         -vvv or -vtrace
-  -o OPTIONS_HOST, --options OPTIONS_HOST
+-o OPTIONS_HOST, --options OPTIONS_HOST
                         Define options values (host machine), e.g.: -o
                         Pkg:with_qt=true
-  -o:b OPTIONS_BUILD, --options:build OPTIONS_BUILD
+-o:b OPTIONS_BUILD, --options:build OPTIONS_BUILD
                         Define options values (build machine), e.g.: -o:b
                         Pkg:with_qt=true
-  -o:h OPTIONS_HOST, --options:host OPTIONS_HOST
+-o:h OPTIONS_HOST, --options:host OPTIONS_HOST
                         Define options values (host machine), e.g.: -o:h
                         Pkg:with_qt=true
-  -pr PROFILE_HOST, --profile PROFILE_HOST
+-pr PROFILE_HOST, --profile PROFILE_HOST
                         Apply the specified profile to the host machine
-  -pr:b PROFILE_BUILD, --profile:build PROFILE_BUILD
+-pr:b PROFILE_BUILD, --profile:build PROFILE_BUILD
                         Apply the specified profile to the build machine
-  -pr:h PROFILE_HOST, --profile:host PROFILE_HOST
+-pr:h PROFILE_HOST, --profile:host PROFILE_HOST
                         Apply the specified profile to the host machine
-  -s SETTINGS_HOST, --settings SETTINGS_HOST
+-s SETTINGS_HOST, --settings SETTINGS_HOST
                         Settings to build the package, overwriting the
                         defaults (host machine). e.g.: -s compiler=gcc
-  -s:b SETTINGS_BUILD, --settings:build SETTINGS_BUILD
+-s:b SETTINGS_BUILD, --settings:build SETTINGS_BUILD
                         Settings to build the package, overwriting the
                         defaults (build machine). e.g.: -s:b compiler=gcc
-  -s:h SETTINGS_HOST, --settings:host SETTINGS_HOST
+-s:h SETTINGS_HOST, --settings:host SETTINGS_HOST
                         Settings to build the package, overwriting the
                         defaults (host machine). e.g.: -s:h compiler=gcc
-  -c CONF_HOST, --conf CONF_HOST
+-c CONF_HOST, --conf CONF_HOST
                         Configuration to build the package, overwriting the
                         defaults (host machine). e.g.: -c
                         tools.cmake.cmaketoolchain:generator=Xcode
-  -c:b CONF_BUILD, --conf:build CONF_BUILD
+-c:b CONF_BUILD, --conf:build CONF_BUILD
                         Configuration to build the package, overwriting the
                         defaults (build machine). e.g.: -c:b
                         tools.cmake.cmaketoolchain:generator=Xcode
-  -c:h CONF_HOST, --conf:host CONF_HOST
+-c:h CONF_HOST, --conf:host CONF_HOST
                         Configuration to build the package, overwriting the
                         defaults (host machine). e.g.: -c:h
                         tools.cmake.cmaketoolchain:generator=Xcode
@@ -459,6 +461,45 @@ os=Macos
 ...
 </pre></div>
 </div>
+<p>The command can also output a json with the results:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan profile show --format=json
+
+{
+&quot;host&quot;: {
+    &quot;settings&quot;: {
+        &quot;arch&quot;: &quot;armv8&quot;,
+        &quot;build_type&quot;: &quot;Release&quot;,
+        &quot;compiler&quot;: &quot;apple-clang&quot;,
+        &quot;compiler.cppstd&quot;: &quot;gnu17&quot;,
+        &quot;compiler.libcxx&quot;: &quot;libc++&quot;,
+        &quot;compiler.version&quot;: &quot;15&quot;,
+        &quot;os&quot;: &quot;Macos&quot;
+    },
+    &quot;package_settings&quot;: {},
+    &quot;options&quot;: {},
+    &quot;tool_requires&quot;: {},
+    &quot;conf&quot;: {},
+    &quot;build_env&quot;: &quot;&quot;
+},
+&quot;build&quot;: {
+    &quot;settings&quot;: {
+        &quot;arch&quot;: &quot;armv8&quot;,
+        &quot;build_type&quot;: &quot;Release&quot;,
+        &quot;compiler&quot;: &quot;apple-clang&quot;,
+        &quot;compiler.cppstd&quot;: &quot;gnu17&quot;,
+        &quot;compiler.libcxx&quot;: &quot;libc++&quot;,
+        &quot;compiler.version&quot;: &quot;15&quot;,
+        &quot;os&quot;: &quot;Macos&quot;
+    },
+    &quot;package_settings&quot;: {},
+    &quot;options&quot;: {},
+    &quot;tool_requires&quot;: {},
+    &quot;conf&quot;: {},
+    &quot;build_env&quot;: &quot;&quot;
+}
+}
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -491,7 +532,7 @@ os=Macos
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -904,7 +945,7 @@ os=Macos
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

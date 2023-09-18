@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>init() &mdash; conan 2.0.10 documentation</title>
+  <title>init() &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="Methods" href="../methods.html"/>
         <link rel="next" title="layout()" href="layout.html"/>
         <link rel="prev" title="generate()" href="generate.html"/>
@@ -146,6 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l4"><a class="reference internal" href="validate_build.html">validate_build()</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../running_and_output.html">Running and output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../conanfile_txt.html">conanfile.txt</a></li>
@@ -281,7 +282,7 @@ Assuming we have a <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <p>The final <code class="docutils literal notranslate"><span class="pre">Pkg</span></code> conanfile will have both <code class="docutils literal notranslate"><span class="pre">os</span></code> and <code class="docutils literal notranslate"><span class="pre">arch</span></code> as settings, and <code class="docutils literal notranslate"><span class="pre">MyLicense</span></code> as license.</p>
-<p>To extend the <code class="docutils literal notranslate"><span class="pre">options</span></code> of the base class, it is necessarry to call the <code class="docutils literal notranslate"><span class="pre">self.options.update()</span></code> method:</p>
+<p>To extend the <code class="docutils literal notranslate"><span class="pre">options</span></code> of the base class, it is necessary to call the <code class="docutils literal notranslate"><span class="pre">self.options.update()</span></code> method:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">base/conanfile.py</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
@@ -380,7 +381,7 @@ base class options and the base class default options values:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -793,7 +794,7 @@ base class options and the base class default options values:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

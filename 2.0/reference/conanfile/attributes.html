@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Attributes &mdash; conan 2.0.10 documentation</title>
+  <title>Attributes &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="conanfile.py" href="../conanfile.html"/>
         <link rel="next" title="Methods" href="methods.html"/>
         <link rel="prev" title="conanfile.py" href="../conanfile.html"/>
@@ -120,6 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l2 current"><a class="reference internal" href="../conanfile.html">conanfile.py</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="methods.html">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running_and_output.html">Running and output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../conanfile_txt.html">conanfile.txt</a></li>
@@ -294,10 +295,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><a class="reference internal" href="#other" id="id57">Other</a><ul>
 <li><a class="reference internal" href="#dependencies" id="id58">dependencies</a></li>
 <li><a class="reference internal" href="#conf" id="id59">conf</a></li>
-<li><a class="reference internal" href="#revision-mode" id="id60">revision_mode</a></li>
-<li><a class="reference internal" href="#upload-policy" id="id61">upload_policy</a></li>
-<li><a class="reference internal" href="#required-conan-version" id="id62">required_conan_version</a></li>
-<li><a class="reference internal" href="#implements" id="id63">implements</a></li>
+<li><a class="reference internal" href="#output" id="id60">Output</a></li>
+<li><a class="reference internal" href="#output-contents" id="id61">Output contents</a></li>
+<li><a class="reference internal" href="#revision-mode" id="id62">revision_mode</a></li>
+<li><a class="reference internal" href="#upload-policy" id="id63">upload_policy</a></li>
+<li><a class="reference internal" href="#required-conan-version" id="id64">required_conan_version</a></li>
+<li><a class="reference internal" href="#implements" id="id65">implements</a></li>
 </ul>
 </li>
 </ul>
@@ -328,7 +331,7 @@ In case the version follows semantic versioning in the form <code class="docutil
 this package through version ranges instead of exact versions.</p>
 <p>The version is only strictly necessary for <code class="docutils literal notranslate"><span class="pre">export</span></code>-ing the recipe into the local cache (<code class="docutils literal notranslate"><span class="pre">export</span></code>, <code class="docutils literal notranslate"><span class="pre">export-pkg</span></code>
 and <code class="docutils literal notranslate"><span class="pre">create</span></code> commands), if they are not defined in the command line with <code class="docutils literal notranslate"><span class="pre">--version=&lt;pkgversion&gt;</span></code></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> can be dynamically defined in the command line, and also programmaticaly in the recipe with the
+<p>The <code class="docutils literal notranslate"><span class="pre">version</span></code> can be dynamically defined in the command line, and also programmatically in the recipe with the
 <a class="reference internal" href="methods/set_version.html#reference-conanfile-methods-set-version"><span class="std std-ref">set_version() method</span></a>.</p>
 </div>
 <div class="section" id="user">
@@ -826,7 +829,7 @@ a valid <code class="docutils literal notranslate"><span class="pre">reference_p
 <div class="section" id="default-build-options">
 <h3><a class="toc-backref" href="#id30">default_build_options</a><a class="headerlink" href="#default-build-options" title="Permalink to this headline">¶</a></h3>
 <p>The attribute <code class="docutils literal notranslate"><span class="pre">default_build_options</span></code> defines the default values for the options in the
-build context and is tipically used for defining options for <code class="docutils literal notranslate"><span class="pre">tool_requires</span></code>.</p>
+build context and is typically used for defining options for <code class="docutils literal notranslate"><span class="pre">tool_requires</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
 <span class="k">class</span> <span class="nc">Consumer</span><span class="p">(</span><span class="n">ConanFile</span><span class="p">):</span>
     <span class="n">default_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;protobuf/*:shared&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
@@ -1118,7 +1121,7 @@ is in editable mode, or when the package is in the cache. The <code class="docut
 <li><code class="docutils literal notranslate"><span class="pre">conf_info</span></code>: configuration information for consumers (equivalent to <code class="docutils literal notranslate"><span class="pre">self.conf_info</span></code> in <code class="docutils literal notranslate"><span class="pre">package_info()</span></code>). Note this is
 only automatically propagated to <code class="docutils literal notranslate"><span class="pre">self.conf</span></code> of consumers when this package is a direct <code class="docutils literal notranslate"><span class="pre">tool_require</span></code>.</li>
 </ul>
-<p>For example, if we had an <code class="docutils literal notranslate"><span class="pre">androidndk</span></code> recipe that contais the AndroidNDK, and we want to have that recipe in “editable” mode,
+<p>For example, if we had an <code class="docutils literal notranslate"><span class="pre">androidndk</span></code> recipe that contains the AndroidNDK, and we want to have that recipe in “editable” mode,
 it is necessary where the androidndk will be locally, before being in the created package:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
@@ -1324,8 +1327,23 @@ The profile entries have priority.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="output">
+<h3><a class="toc-backref" href="#id60">Output</a><a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="output-contents">
+<span id="conanfile-output-attribute"></span><h3><a class="toc-backref" href="#id61">Output contents</a><a class="headerlink" href="#output-contents" title="Permalink to this headline">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">self.output</span></code> to print contents to the output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;This is good, should be green&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This is neutral, should be white&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;This is a warning, should be yellow&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error, should be red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additional output methods are available and you can produce different outputs with different colors.
+See <a class="reference internal" href="running_and_output.html#reference-conanfile-output"><span class="std std-ref">the output documentation</span></a> for the list of available output methods.</p>
+</div>
 <div class="section" id="revision-mode">
-<span id="revision-mode-attribute"></span><h3><a class="toc-backref" href="#id60">revision_mode</a><a class="headerlink" href="#revision-mode" title="Permalink to this headline">¶</a></h3>
+<span id="revision-mode-attribute"></span><h3><a class="toc-backref" href="#id62">revision_mode</a><a class="headerlink" href="#revision-mode" title="Permalink to this headline">¶</a></h3>
 <p>This attribute allow each recipe to declare how the revision for the recipe itself should
 be computed. It can take three different values:</p>
 <ul class="simple">
@@ -1341,7 +1359,7 @@ with each file exported under its distinct revision.</li>
 </ul>
 </div>
 <div class="section" id="upload-policy">
-<h3><a class="toc-backref" href="#id61">upload_policy</a><a class="headerlink" href="#upload-policy" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id63">upload_policy</a><a class="headerlink" href="#upload-policy" title="Permalink to this headline">¶</a></h3>
 <p>Controls when the current package built binaries are uploaded or not</p>
 <ul>
 <li><p class="first"><code class="docutils literal notranslate"><span class="pre">&quot;skip&quot;</span></code>: The precompiled binaries are not uploaded. This is useful for “installer”
@@ -1357,7 +1375,7 @@ together with the <code class="docutils literal notranslate"><span class="pre">b
 </ul>
 </div>
 <div class="section" id="required-conan-version">
-<h3><a class="toc-backref" href="#id62">required_conan_version</a><a class="headerlink" href="#required-conan-version" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id64">required_conan_version</a><a class="headerlink" href="#required-conan-version" title="Permalink to this headline">¶</a></h3>
 <p>Recipes can define a module level <code class="docutils literal notranslate"><span class="pre">required_conan_version</span></code> that defines a valid version range of
 Conan versions that can load and understand the current <code class="docutils literal notranslate"><span class="pre">conanfile.py</span></code>. The syntax is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
@@ -1374,7 +1392,7 @@ define a global minimum, maximum or exact Conan version to run, which can be ver
 to maintain teams of developers and CI machines to use the desired range of versions.</p>
 </div>
 <div class="section" id="implements">
-<span id="conan-conanfile-attributes-implements"></span><h3><a class="toc-backref" href="#id63">implements</a><a class="headerlink" href="#implements" title="Permalink to this headline">¶</a></h3>
+<span id="conan-conanfile-attributes-implements"></span><h3><a class="toc-backref" href="#id65">implements</a><a class="headerlink" href="#implements" title="Permalink to this headline">¶</a></h3>
 <p>A list is used to define a series of option configurations that Conan will handle
 automatically. This is especially handy for avoiding boilerplate code that tends to repeat
 in most of the recipes. The syntax is as follows:</p>
@@ -1427,7 +1445,7 @@ when the method is not explicitly defined in the recipe.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1840,7 +1858,7 @@ when the method is not explicitly defined in the recipe.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

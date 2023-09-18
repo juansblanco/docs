@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan build &mdash; conan 2.0.10 documentation</title>
+  <title>conan build &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Commands" href="../commands.html"/>
         <link rel="next" title="conan create" href="create.html"/>
         <link rel="prev" title="conan version" href="version.html"/>
@@ -239,7 +239,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <span id="reference-commands-build"></span><h1>conan build<a class="headerlink" href="#conan-build" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan build -h
 usage: conan build [-h] [-v [V]] [--name NAME] [--version VERSION]
-                   [--user USER] [--channel CHANNEL] [-of OUTPUT_FOLDER]
+                   [--user USER] [--channel CHANNEL] [-g GENERATOR]
+                   [-of OUTPUT_FOLDER] [-d DEPLOYER]
+                   [--deployer-folder DEPLOYER_FOLDER] [--build-require]
                    [-b BUILD] [-r REMOTE | -nr] [-u] [-o OPTIONS_HOST]
                    [-o:b OPTIONS_BUILD] [-o:h OPTIONS_HOST] [-pr PROFILE_HOST]
                    [-pr:b PROFILE_BUILD] [-pr:h PROFILE_HOST]
@@ -248,6 +250,7 @@ usage: conan build [-h] [-v [V]] [--name NAME] [--version VERSION]
                    [-c:h CONF_HOST] [-l LOCKFILE] [--lockfile-partial]
                    [--lockfile-out LOCKFILE_OUT] [--lockfile-packages]
                    [--lockfile-clean]
+                   [--lockfile-overrides LOCKFILE_OVERRIDES]
                    [path]
 
 Install dependencies and call the build() method.
@@ -268,22 +271,31 @@ optional arguments:
                         conanfile
   --user USER           Provide a user if not specified in conanfile
   --channel CHANNEL     Provide a channel if not specified in conanfile
+  -g GENERATOR, --generator GENERATOR
+                        Generators to use
   -of OUTPUT_FOLDER, --output-folder OUTPUT_FOLDER
                         The root output folder for generated and build files
+  -d DEPLOYER, --deployer DEPLOYER
+                        Deploy using the provided deployer to the output
+                        folder
+  --deployer-folder DEPLOYER_FOLDER
+                        Deployer output folder, base build folder by default
+                        if not set
+  --build-require       Whether the provided path is a build-require
   -b BUILD, --build BUILD
                         Optional, specify which packages to build from source.
                         Combining multiple &#39;--build&#39; options on one command
                         line is allowed. Possible values: --build=&quot;*&quot; Force
                         build from source for all packages. --build=never
                         Disallow build for all packages, use binary packages
-                        or fail if a binary package is not found. Cannot be
+                        or fail if a binary package is not found, it cannot be
                         combined with other &#39;--build&#39; options. --build=missing
                         Build packages from source whose binary package is not
                         found. --build=cascade Build packages from source that
                         have at least one dependency being built from source.
                         --build=[pattern] Build packages from source whose
                         package reference matches the pattern. The pattern
-                        uses &#39;fnmatch&#39; style wildcards. --build=![pattern]
+                        uses &#39;fnmatch&#39; style wildcards. --build=~[pattern]
                         Excluded packages, which will not be built from the
                         source, whose package reference matches the pattern.
                         The pattern uses &#39;fnmatch&#39; style wildcards.
@@ -345,13 +357,15 @@ optional arguments:
                         Filename of the updated lockfile
   --lockfile-packages   Lock package-id and package-revision information
   --lockfile-clean      Remove unused entries from the lockfile
+  --lockfile-overrides LOCKFILE_OVERRIDES
+                        Overwrite lockfile overrides
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span></code> command installs the recipe specified in <code class="docutils literal notranslate"><span class="pre">path</span></code> and calls its <code class="docutils literal notranslate"><span class="pre">build</span></code> method.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">build</span></code> command installs the recipe specified in <code class="docutils literal notranslate"><span class="pre">path</span></code> and calls its <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li>Read the tutorial about the <a class="reference internal" href="../../tutorial/developing_packages/local_package_development_flow.html#local-package-development-flow"><span class="std std-ref">local package developement flow</span></a>.</li>
+<li>Read the tutorial about the <a class="reference internal" href="../../tutorial/developing_packages/local_package_development_flow.html#local-package-development-flow"><span class="std std-ref">local package development flow</span></a>.</li>
 </ul>
 </div>
 </div>
@@ -379,7 +393,7 @@ optional arguments:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -792,7 +806,7 @@ optional arguments:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

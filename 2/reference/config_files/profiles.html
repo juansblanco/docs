@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>profiles &mdash; conan 2.0.10 documentation</title>
+  <title>profiles &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Configuration files" href="../config_files.html"/>
         <link rel="next" title="settings.yml" href="settings.html"/>
         <link rel="prev" title="global.conf" href="global_conf.html"/>
@@ -359,7 +359,7 @@ compiler.version<span class="o">=</span><span class="m">14</span>
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
 <li>Manage your profiles and share them using <a class="reference internal" href="../commands/config.html#reference-commands-conan-config-install"><span class="std std-ref">conan config install</span></a>.</li>
-<li>Check the command and its sub-comands of <a class="reference internal" href="../commands/profile.html#reference-commands-profile"><span class="std std-ref">conan profile</span></a>.</li>
+<li>Check the command and its sub-commands of <a class="reference internal" href="../commands/profile.html#reference-commands-profile"><span class="std std-ref">conan profile</span></a>.</li>
 </ul>
 </div>
 </div>
@@ -735,6 +735,56 @@ would be useful to define custom per-package settings or options for multiple pa
 in a large dependency graph.</p>
 </li>
 </ul>
+<p id="reference-config-files-profiles-detect-api"><strong>Profile Rendering with ``detect_api``</strong></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>Stability Guarantees</strong>: The detect_api, similar to <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">profile</span> <span class="pre">detect</span></code>, does not
+offer strong stability guarantees.</p>
+<p class="last"><strong>Usage Recommendations</strong>: The detect_api is not a regular API meant for creating new
+commands or similar functionalities. While auto-detection can be convenient, it’s not
+the recommended approach for all scenarios. This API is internal to Conan and is only
+exposed for profile and <em>global.conf</em> rendering. It’s advised to use it judiciously.</p>
+</div>
+<p>Conan also injects <code class="docutils literal notranslate"><span class="pre">detect_api</span></code> to the jinja rendering context. With it, it’s
+possible to use Conan’s auto-detection capabilities directly within Jinja profile
+templates. This provides a way to dynamically determine certain settings based on the
+environment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">detect_api</span></code> can be invoked within the Jinja template of a profile. For instance, to
+detect the operating system and architecture, you can use:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">[settings]</span>
+<span class="x">os=</span><span class="cp">{{</span><span class="nv">detect_api.detect_os</span><span class="o">()</span><span class="cp">}}</span>
+<span class="x">arch=</span><span class="cp">{{</span><span class="nv">detect_api.detect_arch</span><span class="o">()</span><span class="cp">}}</span>
+</pre></div>
+</div>
+<p>Similarly, for more advanced detections like determining the compiler, its version, and
+the associated runtime, you can use:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">compiler</span><span class="o">,</span> <span class="nv">version</span> <span class="o">=</span> <span class="nv">detect_api.detect_compiler</span><span class="o">()</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">runtime</span><span class="o">,</span> <span class="kp">_</span> <span class="o">=</span> <span class="nv">detect_api.default_msvc_runtime</span><span class="o">(</span><span class="nv">compiler</span><span class="o">)</span> <span class="cp">%}</span>
+<span class="x">[settings]</span>
+<span class="x">compiler=</span><span class="cp">{{</span><span class="nv">compiler</span><span class="cp">}}</span>
+<span class="x">compiler.version=</span><span class="cp">{{</span><span class="nv">detect_api.default_compiler_version</span><span class="o">(</span><span class="nv">compiler</span><span class="o">,</span> <span class="nv">version</span><span class="o">)</span><span class="cp">}}</span>
+<span class="x">compiler.runtime=</span><span class="cp">{{</span><span class="nv">runtime</span><span class="cp">}}</span>
+<span class="x">compiler.cppstd=</span><span class="cp">{{</span><span class="nv">detect_api.default_cppstd</span><span class="o">(</span><span class="nv">compiler</span><span class="o">,</span> <span class="nv">version</span><span class="o">)</span><span class="cp">}}</span>
+</pre></div>
+</div>
+<p><strong>detect_api reference</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>`detect_os()`</strong>: returns operating system as a string (e.g., “Windows”, “Macos”).</li>
+<li><strong>`detect_arch()`</strong>: returns system architecture as a string (e.g., “x86_64”, “armv8”).</li>
+<li><strong>`detect_libcxx(compiler, version)`</strong>: returns C++ standard library as a string (e.g., “libstdc++”, “libc++”).</li>
+<li><strong>`default_msvc_runtime(compiler)`</strong>: returns tuple with runtime (e.g., “dynamic”) and its version (e.g., “v143”).</li>
+<li><strong>`default_cppstd(compiler, compiler_version)`</strong>: returns default C++ standard as a string (e.g., “gnu14”).</li>
+<li><strong>`detect_compiler()`</strong>: returns tuple with compiler name (e.g., “gcc”) and its version.</li>
+<li><strong>`default_msvc_ide_version(version)`</strong>: returns MSVC IDE version as a string (e.g., “17”).</li>
+<li><dl class="first docutils">
+<dt><strong>`default_compiler_version(compiler, version)`</strong>: returns the default version that</dt>
+<dd>Conan uses in profiles, typically dropping some of the minor or patch digits, that
+do not affect binary compatibility.</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="profile-patterns">
 <h2>Profile patterns<a class="headerlink" href="#profile-patterns" title="Permalink to this headline">¶</a></h2>
@@ -869,7 +919,7 @@ zlib*:compiler.version=3.5
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -1282,7 +1332,7 @@ zlib*:compiler.version=3.5
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

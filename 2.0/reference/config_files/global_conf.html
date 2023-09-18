@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>global.conf &mdash; conan 2.0.10 documentation</title>
+  <title>global.conf &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Configuration files" href="../config_files.html"/>
         <link rel="next" title="profiles" href="profiles.html"/>
         <link rel="prev" title="Configuration files" href="../config_files.html"/>
@@ -250,7 +250,7 @@ core.download:download_cache: Define path to a file download cache
 core.download:parallel: Number of concurrent threads to download packages
 core.download:retry: Number of retries in case of failure when downloading from Conan server
 core.download:retry_wait: Seconds to wait between download attempts from Conan server
-core.gzip:compresslevel: The Gzip compresion level for Conan artifacts (default=9)
+core.gzip:compresslevel: The Gzip compression level for Conan artifacts (default=9)
 core.net.http:cacert_path: Path containing a custom Cacert file
 core.net.http:clean_system_proxy: If defined, the proxies system env-vars will be discarded
 core.net.http:client_cert: Path or tuple of files containing a client cert (and key)
@@ -305,7 +305,7 @@ tools.cmake.cmaketoolchain:toolchain_file: Use other existing file rather than c
 tools.cmake.cmaketoolchain:toolset_arch: Toolset architecture to be used as part of CMAKE_GENERATOR_TOOLSET in CMakeToolchain
 tools.cmake.cmaketoolchain:user_toolchain: Inject existing user toolchains at the beginning of conan_toolchain.cmake
 tools.cmake:cmake_program: Path to CMake executable
-tools.cmake:install_strip: Add --strip to cmake.instal()
+tools.cmake:install_strip: Add --strip to cmake.install()
 tools.compilation:verbosity: Verbosity of compilation tools if set. Possible values are &#39;quiet&#39; and &#39;verbose&#39;
 tools.deployer:symlinks: Set to False to disable deployers copying symlinks
 tools.env.virtualenv:powershell: If it is set to True it will generate powershell launchers if os=Windows
@@ -365,7 +365,7 @@ user.confvar:something=False
 <li><code class="docutils literal notranslate"><span class="pre">tools.yyy</span></code> can be defined in <code class="docutils literal notranslate"><span class="pre">global.conf</span></code>, in profiles <code class="docutils literal notranslate"><span class="pre">[conf]</span></code> section and cli <code class="docutils literal notranslate"><span class="pre">-c</span></code> arguments</li>
 <li><code class="docutils literal notranslate"><span class="pre">user.zzz</span></code> can be defined everywhere, and they are totally at the user discretion, no established naming convention. However this would be more or less expected:
 - For open source libraries, specially those in conancenter, <code class="docutils literal notranslate"><span class="pre">user.packagename:conf</span></code> might be expected, like the <code class="docutils literal notranslate"><span class="pre">boost</span></code> recipe defining <code class="docutils literal notranslate"><span class="pre">user.boost:conf</span></code> conf
-- For private usage, the recommendation could be to use something like <code class="docutils literal notranslate"><span class="pre">user.orgname:conf</span></code> for global org configuration accross all projects, <code class="docutils literal notranslate"><span class="pre">user.orgname.project:conf</span></code> for project or package configuration, though <code class="docutils literal notranslate"><span class="pre">user.project:conf</span></code> might be also good if the project name is unique enough.</li>
+- For private usage, the recommendation could be to use something like <code class="docutils literal notranslate"><span class="pre">user.orgname:conf</span></code> for global org configuration across all projects, <code class="docutils literal notranslate"><span class="pre">user.orgname.project:conf</span></code> for project or package configuration, though <code class="docutils literal notranslate"><span class="pre">user.project:conf</span></code> might be also good if the project name is unique enough.</li>
 </ul>
 </div>
 <div class="section" id="configuration-file-template">
@@ -380,6 +380,14 @@ and renders the template, which must result in a standard tools-configuration te
 </pre></div>
 </div>
 </div></blockquote>
+<p>Conan also injects <code class="docutils literal notranslate"><span class="pre">detect_api</span></code> (non-stable, read the reference) to the jinja rendering context. You can use it like this:</p>
+<blockquote>
+<div><div class="code jinja highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">myteam</span><span class="p">:</span><span class="n">myconf1</span><span class="o">=</span><span class="p">{{</span><span class="n">detect_api</span><span class="o">.</span><span class="n">detect_os</span><span class="p">()}}</span>
+<span class="n">user</span><span class="o">.</span><span class="n">myteam</span><span class="p">:</span><span class="n">myconf2</span><span class="o">=</span><span class="p">{{</span><span class="n">detect_api</span><span class="o">.</span><span class="n">detect_arch</span><span class="p">()}}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For more information on how to use it, please check <a class="reference internal" href="profiles.html#reference-config-files-profiles-detect-api"><span class="std std-ref">the detect_api section</span></a> in the profiles reference.</p>
 <p>The Python packages passed to render the template are <code class="docutils literal notranslate"><span class="pre">os</span></code> and <code class="docutils literal notranslate"><span class="pre">platform</span></code> for all platforms and <code class="docutils literal notranslate"><span class="pre">distro</span></code> in Linux platforms.
 Additionally, the variables <code class="docutils literal notranslate"><span class="pre">conan_version</span></code> and <code class="docutils literal notranslate"><span class="pre">conan_home_folder</span></code> are also available.</p>
 </div>
@@ -527,7 +535,7 @@ by adding the warning tag to its value.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -940,7 +948,7 @@ by adding the warning tag to its value.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build packages: the build() method &mdash; conan 2.0.10 documentation</title>
+  <title>Build packages: the build() method &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Creating packages" href="../creating_packages.html"/>
         <link rel="next" title="Package files: the package() method" href="package_method.html"/>
         <link rel="prev" title="Configure settings and options in recipes" href="configure_options_settings.html"/>
@@ -294,7 +294,7 @@ whether to build and run the tests or not. A couple of things to bear in mind:<u
 <li>If we set the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration to <code class="docutils literal notranslate"><span class="pre">True</span></code> Conan will
 automatically inject the <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code> variable to CMake set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. You will
 see in the next section that we are using this variable in our <em>CMakeLists.txt</em> to
-decide wether to build the tests or not.</li>
+decide whether to build the tests or not.</li>
 <li>We use the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration in the <code class="docutils literal notranslate"><span class="pre">build()</span></code> method,
 after building the package and tests, to decide if we want to run the tests or not.</li>
 <li>In this case we are using <strong>gtest</strong> for testing and we have to add the check if the
@@ -333,7 +333,7 @@ endif()
 <p>The <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code> <a class="reference external" href="https://cmake.org/cmake/help/latest/module/CTest.html">CMake variable</a> is declared and set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>
 by Conan (if not already defined) whenever the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration is
 set to value <code class="docutils literal notranslate"><span class="pre">True</span></code>. This variable is typically declared by CMake when you use CTest but
-using the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration you can use it in your <em>CMakeListst.txt</em>
+using the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration you can use it in your <em>CMakeLists.txt</em>
 even if you are using another testing framework.</p>
 <ul class="simple">
 <li>We have a <a class="reference external" href="https://github.com/conan-io/libhello/blob/with_tests/tests/CMakeLists.txt">CMakeLists.txt</a> in the
@@ -439,7 +439,7 @@ tool:</p>
 </div>
 <p>Please, note that patching in <code class="docutils literal notranslate"><span class="pre">build()</span></code> should avoided if possible and only be done for
 very particular cases as it will make more difficult to develop your packages locally (we
-will explain more about this in the local developement flow section later &lt;MISSING REFERENCE&gt;)</p>
+will explain more about this in the local development flow section later &lt;MISSING REFERENCE&gt;)</p>
 </div>
 <div class="section" id="conditionally-select-your-build-system">
 <h2>Conditionally select your build system<a class="headerlink" href="#conditionally-select-your-build-system" title="Permalink to this headline">¶</a></h2>
@@ -521,7 +521,7 @@ CMake and in Linux and MacOS using Autotools. This can be easily handled in the
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -934,7 +934,7 @@ CMake and in Linux and MacOS using Autotools. This can be easily handled in the
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

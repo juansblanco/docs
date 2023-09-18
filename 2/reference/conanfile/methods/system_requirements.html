@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>system_requirements() &mdash; conan 2.0.10 documentation</title>
+  <title>system_requirements() &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="Methods" href="../methods.html"/>
         <link rel="next" title="test()" href="test.html"/>
         <link rel="prev" title="source()" href="source.html"/>
@@ -146,6 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l4"><a class="reference internal" href="validate_build.html">validate_build()</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../running_and_output.html">Running and output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../conanfile_txt.html">conanfile.txt</a></li>
@@ -244,7 +245,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
   <div class="section" id="system-requirements">
 <span id="reference-conanfile-methods-system-requirements"></span><h1>system_requirements()<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">system_requirements()</span></code> method can be used to call the system package managers to install packages at the system level. In general, this should be reduced to a minimum, system packages are not modeleded dependencies, but it can be sometimes convenient to automate the installation of some system packages that are necessary for some Conan packages. For example, when creating a recipe to package the <code class="docutils literal notranslate"><span class="pre">opencv</span></code> library, we could realize that it needs in Linux the <code class="docutils literal notranslate"><span class="pre">gtk</span></code> libraries, but it might be undesired to create a package for them, because we want to make sure we use the system ones. We code</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">system_requirements()</span></code> method can be used to call the system package managers to install packages at the system level. In general, this should be reduced to a minimum, system packages are not modeled dependencies, but it can be sometimes convenient to automate the installation of some system packages that are necessary for some Conan packages. For example, when creating a recipe to package the <code class="docutils literal notranslate"><span class="pre">opencv</span></code> library, we could realize that it needs in Linux the <code class="docutils literal notranslate"><span class="pre">gtk</span></code> libraries, but it might be undesired to create a package for them, because we want to make sure we use the system ones. We code</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
 <span class="kn">from</span> <span class="nn">conan.tools.system.package_manager</span> <span class="kn">import</span> <span class="n">Apt</span>
 
@@ -353,7 +354,7 @@ packages, those are the packages that are required to be installed, irrespective
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -766,7 +767,7 @@ packages, those are the packages that are required to be installed, irrespective
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>validate_build() &mdash; conan 2.0.10 documentation</title>
+  <title>validate_build() &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,9 +45,9 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
         <link rel="up" title="Methods" href="../methods.html"/>
-        <link rel="next" title="conanfile.txt" href="../../conanfile_txt.html"/>
+        <link rel="next" title="Running and output" href="../running_and_output.html"/>
         <link rel="prev" title="validate()" href="validate.html"/>
 
  <!-- Google Tag Manager -->
@@ -146,6 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l4 current"><a class="current reference internal" href="#">validate_build()</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../running_and_output.html">Running and output</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../conanfile_txt.html">conanfile.txt</a></li>
@@ -245,7 +246,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section" id="validate-build">
 <span id="reference-conanfile-methods-validate-build"></span><h1>validate_build()<a class="headerlink" href="#validate-build" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">validate_build()</span></code> method is used to verify if a package binary can be <strong>built</strong> with the current configuration. It is different than the <code class="docutils literal notranslate"><span class="pre">validate()</span></code> method which raises when the package cannot be <strong>used</strong> with the current configuration.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">validate_build()</span></code> method can check the <code class="docutils literal notranslate"><span class="pre">self.settings</span></code> and <code class="docutils literal notranslate"><span class="pre">self.options</span></code> values to raise <code class="docutils literal notranslate"><span class="pre">ConanInvalidaConfiguration</span></code> if necessary.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">validate_build()</span></code> method can check the <code class="docutils literal notranslate"><span class="pre">self.settings</span></code> and <code class="docutils literal notranslate"><span class="pre">self.options</span></code> values to raise <code class="docutils literal notranslate"><span class="pre">ConanInvalidConfiguration</span></code> if necessary.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conan</span> <span class="kn">import</span> <span class="n">ConanFile</span>
 <span class="kn">from</span> <span class="nn">conan.errors</span> <span class="kn">import</span> <span class="n">ConanInvalidConfiguration</span>
 
@@ -289,7 +290,7 @@ $ conan create . -s compiler=clang  # WORKS!
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../conanfile_txt.html" class="btn btn-neutral float-right" title="conanfile.txt" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../running_and_output.html" class="btn btn-neutral float-right" title="Running and output" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="validate.html" class="btn btn-neutral" title="validate()" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -302,7 +303,7 @@ $ conan create . -s compiler=clang  # WORKS!
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -715,7 +716,7 @@ $ conan create . -s compiler=clang  # WORKS!
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CMakeToolchain: Inject arbitrary CMake variables into dependencies &mdash; conan 2.0.10 documentation</title>
+  <title>CMakeToolchain: Inject arbitrary CMake variables into dependencies &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../../../index.html"/>
         <link rel="up" title="tools.cmake" href="../cmake.html"/>
         <link rel="next" title="tools.files" href="../../files/files.html"/>
         <link rel="prev" title="CMakeToolchain: Extending your CMakePresets with Conan generated ones" href="extend_own_cmake_presets.html"/>
@@ -290,7 +290,7 @@ of files to inject to the generated <code class="docutils literal notranslate"><
 external <code class="docutils literal notranslate"><span class="pre">myvars.cmake</span></code> file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>-pr<span class="o">=</span>myprofile
 ...
---<span class="w"> </span>MYVAR1<span class="w"> </span>MYVALUE1!!
+--<span class="w"> </span>MY_USER_VAR1<span class="w"> </span>MYVALUE1
 </pre></div>
 </div>
 <p>Note that using <code class="docutils literal notranslate"><span class="pre">user_toolchain</span></code> while defining values for confs like <code class="docutils literal notranslate"><span class="pre">tools.cmake.cmaketoolchain:system_name</span></code> is supported.</p>
@@ -322,7 +322,7 @@ command line.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -735,7 +735,7 @@ command line.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

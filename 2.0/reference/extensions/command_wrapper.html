@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command wrapper &mdash; conan 2.0.10 documentation</title>
+  <title>Command wrapper &mdash; conan 2.0.11 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.10 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
         <link rel="up" title="Extensions" href="../extensions.html"/>
         <link rel="next" title="Package signing" href="package_signing.html"/>
         <link rel="prev" title="Profile plugin" href="profile_plugin.html"/>
@@ -242,7 +242,7 @@ in future Conan versions.</p>
 <p>A more common use case would be the injection of a parallelization tools over some commands,
 which could look like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cmd_wrapper</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="c1"># lets paralellize only CMake invocations</span>
+    <span class="c1"># lets parallelize only CMake invocations</span>
     <span class="k">if</span> <span class="n">cmd</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cmake&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;parallel-build &quot;</span><span class="si">{}</span><span class="s1">&quot;  --parallel-argument&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
     <span class="c1"># otherwise return same command, not modified</span>
@@ -286,7 +286,7 @@ depending on the caller:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 15, 2023.
+      Last updated on Sep 18, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
@@ -699,7 +699,7 @@ depending on the caller:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.10',
+            VERSION:'2.0.11',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
