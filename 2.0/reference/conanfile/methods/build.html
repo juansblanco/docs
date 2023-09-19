@@ -268,10 +268,24 @@ that a developer would do in the simplest possible way. The <code class="docutil
 for preparing the build, creating toolchain files, CMake presets, or any other files which are necessary
 so developers could easily call the build system by hand. This allows for much better integrations with IDEs and
 improves the developer experience. The result is that in practice the <code class="docutils literal notranslate"><span class="pre">build()</span></code> method should be relatively simple.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method runs once per unique configuration, so if there are some source operations like applying patches that are done conditionally to different configurations, they could be also applied in the
+<code class="docutils literal notranslate"><span class="pre">build()</span></code> method, before the actual build. It is important to note that in this case the <a class="reference internal" href="../attributes.html#conan-conanfile-properties-no-copy-source"><span class="std std-ref">no_copy_source</span></a> attribute cannot be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method is the right place to build and run unit tests, before packaging, and raising errors if those tests fail, interrupting the process, and not even packaging the final binaries.
 The built-in helpers will skip the unit tests if the <code class="docutils literal notranslate"><span class="pre">tools.build:skip_test</span></code> configuration is defined. For custom integrations, it is expected that the method checks this <code class="docutils literal notranslate"><span class="pre">conf</span></code> value in order to skip building and running tests, which can be useful for some CI scenarios.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">build()</span></code> method runs once per unique configuration, so if there are some source operations like applying patches that are done conditionally to different configurations, they could be also applied in the
-<code class="docutils literal notranslate"><span class="pre">build()</span></code> method, before the actual build. It is important to note that in this case the <code class="docutils literal notranslate"><span class="pre">no_copy_source</span></code> attribute cannot be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><strong>Running Tests in Cross-Building Scenarios</strong>: There may be some cases where you want to
+build tests but cannot run them, such as in cross-building scenarios. For these rare
+situations, you can use the <a class="reference internal" href="../../tools/build.html#conan-tools-build-can-run"><span class="std std-ref">conan.tools.build.can_run</span></a>
+tool as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">cmake</span> <span class="o">=</span> <span class="n">CMake</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">cmake</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+    <span class="n">cmake</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">can_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cmake</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p><strong>Best practices</strong></p>
