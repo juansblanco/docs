@@ -385,7 +385,7 @@ and the enviornment variable “MYVAR” has the value declared in the tool-requ
 <h2>Removing settings in package_id()<a class="headerlink" href="#removing-settings-in-package-id" title="Permalink to this headline">¶</a></h2>
 <p>With the previous recipe, if we call <strong class="command">conan create</strong> with different setting like different compiler versions, we will get
 different binary packages with a different <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">ID</span></code>. This might be convenient to, for example, keep better traceability of
-our tools. In this case, the &lt;MISSING PAGE&gt; compatibility.py plugin can help to locate the best matching binary in case Conan doesn’t find the
+our tools. In this case, the <a class="reference internal" href="../../../reference/extensions/binary_compatibility.html#reference-extensions-binary-compatibility"><span class="std std-ref">compatibility.py</span></a> plugin can help to locate the best matching binary in case Conan doesn’t find the
 binary for our specific compiler version.</p>
 <p>But in some cases we might want to just generate a binary taking into account only the <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">arch</span></code> or at most
 adding the <code class="docutils literal notranslate"><span class="pre">build_type</span></code> to know if the application is built for Debug or Release. We can add a <code class="docutils literal notranslate"><span class="pre">package_id()</span></code> method
@@ -459,7 +459,7 @@ Package<span class="w"> </span><span class="s1">&#39;82339cc4d6db7990c1830d274cd
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 19, 2023.
+      Last updated on Sep 22, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
