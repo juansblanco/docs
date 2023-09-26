@@ -306,7 +306,7 @@ ID</strong>. The package ID is just a way to convert a set of settings, options 
 about the requirements of the package to a unique identifier.</p>
 <p>Let’s build our package for <em>Release</em> and <em>Debug</em> configurations and check
 the generated binaries package IDs.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Release<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip buildiing the test_package</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Release<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip ng the test_package</span>
 ...
 <span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
 <span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
@@ -329,7 +329,7 @@ hello/1.0<span class="w"> </span>package<span class="o">()</span>:<span class="w
 hello/1.0:<span class="w"> </span>Full<span class="w"> </span>package<span class="w"> </span>reference:<span class="w"> </span>hello/1.0#e6b11fb0cb64e3777f8d62f4543cd6b3:738feca714b7251063cc51448da0cf4811424e7c#3bd9faedc711cbb4fdf10b295268246e
 hello/1.0:<span class="w"> </span>Package<span class="w"> </span>folder<span class="w"> </span>/Users/user/.conan2/p/5c497cbb5421cbda/p
 
-$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Debug<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip buildiing the test_package</span>
+$<span class="w"> </span>conan<span class="w"> </span>create<span class="w"> </span>.<span class="w"> </span>--build<span class="o">=</span>missing<span class="w"> </span>-s<span class="w"> </span><span class="nv">build_type</span><span class="o">=</span>Debug<span class="w"> </span>-tf<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># -tf=&quot;&quot; will skip building the test_package</span>
 ...
 <span class="o">[</span><span class="w"> </span><span class="m">50</span>%<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>CXX<span class="w"> </span>object<span class="w"> </span>CMakeFiles/hello.dir/src/hello.cpp.o
 <span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>Linking<span class="w"> </span>CXX<span class="w"> </span>static<span class="w"> </span>library<span class="w"> </span>libhello.a
@@ -425,7 +425,7 @@ already had the <code class="docutils literal notranslate"><span class="pre">2a8
 are packaging a C library. When you build this library, there are settings like the
 compiler C++ standard (<code class="docutils literal notranslate"><span class="pre">settings.compiler.cppstd</span></code>) or the standard library used
 (<code class="docutils literal notranslate"><span class="pre">self.settings.compiler.libcxx</span></code>) that won’t affect the resulting binary at all. Then it
-does no make sense that they affect to the package ID computation, so a typical pattern is
+does not make sense that they affect to the package ID computation, so a typical pattern is
 to delete them in the <code class="docutils literal notranslate"><span class="pre">configure()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">compiler</span><span class="o">.</span><span class="n">cppstd</span>
