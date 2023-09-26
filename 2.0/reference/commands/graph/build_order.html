@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan graph build-order &mdash; conan 2.0.11 documentation</title>
+  <title>conan graph build-order &mdash; conan 2.0.12 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.12 documentation" href="../../../index.html"/>
         <link rel="up" title="conan graph" href="../graph.html"/>
         <link rel="next" title="conan graph build-order-merge" href="build_order_merge.html"/>
         <link rel="prev" title="conan graph info" href="info.html"/>
@@ -245,8 +245,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section" id="conan-graph-build-order">
 <h1>conan graph build-order<a class="headerlink" href="#conan-graph-build-order" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ conan graph build-order -h
-usage: conan graph build-order [-h] [-f FORMAT] [-v [V]]
-                               [--name NAME] [--version VERSION] [--user USER]
+usage: conan graph build-order [-h] [-f FORMAT] [-v [V]] [--name NAME]
+                               [--version VERSION] [--user USER]
                                [--channel CHANNEL] [--requires REQUIRES]
                                [--tool-requires TOOL_REQUIRES] [-b BUILD]
                                [-r REMOTE | -nr] [-u] [-o OPTIONS_HOST]
@@ -259,6 +259,7 @@ usage: conan graph build-order [-h] [-f FORMAT] [-v [V]]
                                [--lockfile-partial]
                                [--lockfile-out LOCKFILE_OUT]
                                [--lockfile-packages] [--lockfile-clean]
+                               [--lockfile-overrides LOCKFILE_OVERRIDES]
                                [path]
 
 Compute the build order of a dependency graph.
@@ -290,14 +291,14 @@ optional arguments:
                         line is allowed. Possible values: --build=&quot;*&quot; Force
                         build from source for all packages. --build=never
                         Disallow build for all packages, use binary packages
-                        or fail if a binary package is not found. Cannot be
+                        or fail if a binary package is not found, it cannot be
                         combined with other &#39;--build&#39; options. --build=missing
                         Build packages from source whose binary package is not
                         found. --build=cascade Build packages from source that
                         have at least one dependency being built from source.
                         --build=[pattern] Build packages from source whose
                         package reference matches the pattern. The pattern
-                        uses &#39;fnmatch&#39; style wildcards. --build=![pattern]
+                        uses &#39;fnmatch&#39; style wildcards. --build=~[pattern]
                         Excluded packages, which will not be built from the
                         source, whose package reference matches the pattern.
                         The pattern uses &#39;fnmatch&#39; style wildcards.
@@ -359,6 +360,8 @@ optional arguments:
                         Filename of the updated lockfile
   --lockfile-packages   Lock package-id and package-revision information
   --lockfile-clean      Remove unused entries from the lockfile
+  --lockfile-overrides LOCKFILE_OVERRIDES
+                        Overwrite lockfile overrides
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">graph</span> <span class="pre">build-order</span></code> command computes build order of the dependency graph for the recipe specified in <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
@@ -800,7 +803,7 @@ optional arguments:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.11',
+            VERSION:'2.0.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

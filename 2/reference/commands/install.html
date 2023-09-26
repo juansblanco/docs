@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan install &mdash; conan 2.0.11 documentation</title>
+  <title>conan install &mdash; conan 2.0.12 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="conan 2.0.11 documentation" href="../../index.html"/>
+    <link rel="top" title="conan 2.0.12 documentation" href="../../index.html"/>
         <link rel="up" title="Commands" href="../commands.html"/>
         <link rel="next" title="conan list" href="list.html"/>
         <link rel="prev" title="conan inspect" href="inspect.html"/>
@@ -256,15 +256,16 @@ usage: conan install [-h] [-v [V]] [-f FORMAT] [--name NAME]
 
 Install the requirements specified in a recipe (conanfile.py or conanfile.txt).
 
-It can also be used to install a concrete package specifying a
-reference. If any requirement is not found in the local cache, it will
-retrieve the recipe from a remote, looking for it sequentially in the
-configured remotes. When the recipes have been downloaded it will try
-to download a binary package matching the specified settings, only from
-the remote from which the recipe was retrieved. If no binary package is
-found, it can be built from sources using the &#39;--build&#39; option. When
-the package is installed, Conan will write the files for the specified
-generators.
+It can also be used to install packages without a conanfile, using the
+--requires and --tool-requires arguments.
+
+If any requirement is not found in the local cache, it will iterate the remotes
+looking for it. When the full dependency graph is computed, and all dependencies
+recipes have been found, it will look for binary packages matching the current settings.
+If no binary package is found for some or several dependencies, it will error,
+unless the &#39;--build&#39; argument is used to build it from source.
+
+After installation of packages, the generators and deployers will be called.
 
 positional arguments:
   path                  Path to a folder containing a recipe (conanfile.py or
@@ -293,7 +294,7 @@ optional arguments:
                         line is allowed. Possible values: --build=&quot;*&quot; Force
                         build from source for all packages. --build=never
                         Disallow build for all packages, use binary packages
-                        or fail if a binary package is not found. Cannot be
+                        or fail if a binary package is not found, it cannot be
                         combined with other &#39;--build&#39; options. --build=missing
                         Build packages from source whose binary package is not
                         found. --build=cascade Build packages from source that
@@ -374,7 +375,7 @@ optional arguments:
   --deployer-folder DEPLOYER_FOLDER
                         Deployer output folder, base build folder by default
                         if not set
-  --build-require       Whether the provided reference is a build-require
+  --build-require       Whether the provided path is a build-require
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">conan</span> <span class="pre">install</span></code> command is one of the main Conan commands, and it is used to resolve and install dependencies.</p>
@@ -962,7 +963,7 @@ it should not be necessary in the vast majority of cases, so it is discouraged i
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.11',
+            VERSION:'2.0.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

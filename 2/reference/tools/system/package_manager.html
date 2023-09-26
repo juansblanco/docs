@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>conan.tools.system.package_manager &mdash; conan 2.0.11 documentation</title>
+  <title>conan.tools.system.package_manager &mdash; conan 2.0.12 documentation</title>
   
 
   
@@ -45,7 +45,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="conan 2.0.11 documentation" href="../../../index.html"/>
+    <link rel="top" title="conan 2.0.12 documentation" href="../../../index.html"/>
         <link rel="up" title="conan.tools.system" href="../system.html"/>
         <link rel="next" title="conan.tools.microsoft" href="../microsoft.html"/>
         <link rel="prev" title="conan.tools.system" href="../system.html"/>
@@ -281,14 +281,16 @@ system package manager. They take the same form for all of the package managers 
 <em>Apt</em> that also accepts the <em>recommends</em> argument for the <a class="reference internal" href="#conan-tools-system-package-manager-apt"><span class="std std-ref">install
 method</span></a>.</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">install(self,</span> <span class="pre">packages,</span> <span class="pre">update=False,</span> <span class="pre">check=True):</span></code> try to install
+<li><code class="docutils literal notranslate"><span class="pre">install(self,</span> <span class="pre">packages,</span> <span class="pre">update=False,</span> <span class="pre">check=True,</span> <span class="pre">host_package=True):</span></code> try to install
 the list of packages passed as a parameter. If the parameter <code class="docutils literal notranslate"><span class="pre">check</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> it
 will check if those packages are already installed before installing them. If the
 parameter <code class="docutils literal notranslate"><span class="pre">update</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> it will try to update the package manager database
 before checking and installing. Its behaviour is affected by the value of
 <code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>
-<a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>. It will return the
-return code of the executed commands.</li>
+<a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>. If the parameter
+<code class="docutils literal notranslate"><span class="pre">host_package</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> it will install the packages for the host machine
+architecture (the machine that will run the software), it has an effect when cross
+building. This method will return the return code of the executed commands.</li>
 <li><code class="docutils literal notranslate"><span class="pre">install_substitutes(packages_substitutes,</span> <span class="pre">update=False,</span> <span class="pre">check=True)</span></code>: try to install
 the list of lists of substitutes packages passed as a parameter, e.g., <code class="docutils literal notranslate"><span class="pre">[[&quot;pkg1&quot;,</span> <span class="pre">&quot;pkg2&quot;],</span> <span class="pre">[&quot;pkg3&quot;]]</span></code>.
 It succeeds if one of the substitutes list is completely installed, so it’s intended to be used when you have
@@ -1821,7 +1823,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.11',
+            VERSION:'2.0.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
