@@ -472,7 +472,7 @@ try to install the <code class="docutils literal notranslate"><span class="pre">
 </table>
 <dl class="method">
 <dt id="conan.tools.system.package_manager.Apt.install">
-<code class="descname">install</code><span class="sig-paren">(</span><em>packages</em>, <em>update=False</em>, <em>check=True</em>, <em>recommends=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apt.install" title="Permalink to this definition">¶</a></dt>
+<code class="descname">install</code><span class="sig-paren">(</span><em>packages</em>, <em>update=False</em>, <em>check=True</em>, <em>recommends=False</em>, <em>host_package=True</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.system.package_manager.Apt.install" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will try to install the list of packages passed as a parameter. Its
 behaviour is affected by the value of <code class="docutils literal notranslate"><span class="pre">tools.system.package_manager:mode</span></code>
 <a class="reference internal" href="#conan-tools-system-package-manager-config"><span class="std std-ref">configuration</span></a>.</p>
@@ -484,6 +484,8 @@ behaviour is affected by the value of <code class="docutils literal notranslate"
 <li><strong>packages</strong> – try to install the list of packages passed as a parameter.</li>
 <li><strong>update</strong> – try to update the package manager database before checking and installing.</li>
 <li><strong>check</strong> – check if the packages are already installed before installing them.</li>
+<li><strong>host_package</strong> – install the packages for the host machine architecture (the machine
+that will run the software), it has an effect when cross building.</li>
 <li><strong>recommends</strong> – if the parameter <code class="docutils literal notranslate"><span class="pre">recommends</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> it will add the
 <code class="docutils literal notranslate"><span class="pre">'--no-install-recommends'</span></code> argument to the <em>apt-get</em> command call.</li>
 </ul>
@@ -1406,7 +1408,7 @@ the value of <code class="docutils literal notranslate"><span class="pre">tools.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Sep 22, 2023.
+      Last updated on Sep 26, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
