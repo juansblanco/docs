@@ -364,6 +364,14 @@ of the default profile using:</p>
 <p class="last">Then open and edit the file and set <code class="docutils literal notranslate"><span class="pre">compiler.cppstd</span></code> to the C++ standard you want
 to use.</p>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><strong>Using a different compiler than the auto-detected one</strong></p>
+<p class="last">If you want to change a Conan profile to use a compiler different from the default
+one, you need to change the <code class="docutils literal notranslate"><span class="pre">compiler</span></code> setting and also tell Conan explicitly where
+to find it using the <a class="reference internal" href="../../reference/tools/cmake/cmaketoolchain.html#conan-cmake-toolchain-conf"><span class="std std-ref">tools.build:compiler_executables
+configuration</span></a>.</p>
+</div>
 <p>We will use Conan to install <strong>Zlib</strong> and generate the files that CMake needs to
 find this library and build our project. We will generate those files in the folder
 <em>build</em>. To do that, run:</p>
