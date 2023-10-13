@@ -219,12 +219,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section" id="using-build-tools-as-conan-packages">
 <span id="consuming-packages-tool-requires"></span><h1>Using build tools as Conan packages<a class="headerlink" href="#using-build-tools-as-conan-packages" title="Permalink to this headline">¶</a></h1>
 <p>In the previous example, we built our CMake project and used Conan to install and locate
-the <strong>Zlib</strong> library. Conan used the CMake version found in the system path to build this
-example. But, what happens if you don’t have CMake installed in your build environment or
-want to build your project with a specific CMake version different from the one you have
-already installed system-wide? In this case, you can declare this dependency in Conan
-using a type of requirement named <code class="docutils literal notranslate"><span class="pre">tool_requires</span></code>. Let’s see an example of how to add a
-<code class="docutils literal notranslate"><span class="pre">tool_requires</span></code> to our project, and use a different CMake version to build it.</p>
+the <strong>Zlib</strong> library. Conan used the system path’s CMake version to build this
+example. But what happens if you want to build your project with a specific
+CMake version, different from the one already installed system-wide? In this case,
+you can declare this dependency in Conan using a type of requirement named
+<code class="docutils literal notranslate"><span class="pre">tool_requires</span></code>. Let’s see an example of how to add a <code class="docutils literal notranslate"><span class="pre">tool_requires</span></code> to our project
+and use a different CMake version to build it.</p>
 <p>Please, first clone the sources to recreate this project. You can find them in the
 <a class="reference external" href="https://github.com/conan-io/examples2">examples2.0 repository</a> in GitHub:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/conan-io/examples2.git
@@ -255,6 +255,18 @@ using CMake <strong>v3.22.6</strong>.</p>
 <span class="na">CMakeToolchain</span>
 </pre></div>
 </div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please note that this <em>conanfile.txt</em> will install <em>zlib/1.2.11</em> and <em>cmake/3.22.6</em>
+separately. However, if Conan does not find a binary for Zlib in Conan Center and it
+needs to be built from sources, a CMake installation must already be present in your
+system, because the <code class="docutils literal notranslate"><span class="pre">cmake/3.22.6</span></code> declared in your <code class="docutils literal notranslate"><span class="pre">conanfile.txt</span></code> only applies to
+your current project, not all dependencies.
+If you want to use that <em>cmake/3.22.6</em> to also build Zlib, when installing if
+necessary, you may add the <code class="docutils literal notranslate"><span class="pre">[tool_requires]</span></code> section to the profile you are using.
+Please check <a class="reference internal" href="../../reference/config_files/profiles.html#reference-config-files-profiles"><span class="std std-ref">the profile doc</span></a> for more
+information.</p>
 </div>
 <p>We also added a message to the <em>CMakeLists.txt</em> to output the CMake version:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
@@ -444,7 +456,7 @@ use <code class="docutils literal notranslate"><span class="pre">tool_requires</
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Oct 10, 2023.
+      Last updated on Oct 13, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
