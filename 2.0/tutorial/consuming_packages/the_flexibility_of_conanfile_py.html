@@ -307,10 +307,21 @@ binary compatibility later.</li>
 <li><strong>generators</strong> this class attribute specifies which Conan generators will be run when we
 call the <strong class="command">conan install</strong> command. In this case, we added <strong>CMakeToolchain</strong> and
 <strong>CMakeDeps</strong> as in the <em>conanfile.txt</em>.</li>
-<li><strong>requirements()</strong> in this method we can use the <code class="docutils literal notranslate"><span class="pre">self.requires()</span></code> and
-<code class="docutils literal notranslate"><span class="pre">self.tool_requires()</span></code> methods to declare all our dependencies (libraries and build
-tools).</li>
+<li><strong>requirements()</strong> in this method we use the <code class="docutils literal notranslate"><span class="pre">self.requires()</span></code> method to declare the
+<em>zlib/1.2.11</em> dependency.</li>
+<li><strong>build_requirements()</strong> in this method we use the <code class="docutils literal notranslate"><span class="pre">self.tool_requires()</span></code> method to declare the
+<em>cmake/3.22.6</em> dependency.</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s not strictly necessary to add the dependencies to the tools in
+<code class="docutils literal notranslate"><span class="pre">build_requirements()</span></code>, as in theory everything within this method could be done in
+the <code class="docutils literal notranslate"><span class="pre">requirements()</span></code> method. However, <code class="docutils literal notranslate"><span class="pre">build_requirements()</span></code> provides a dedicated
+place to define <code class="docutils literal notranslate"><span class="pre">tool_requires</span></code> and <code class="docutils literal notranslate"><span class="pre">test_requires</span></code>, which helps in keeping the
+structure organized and clear. For more information, please check the
+<a class="reference internal" href="../../reference/conanfile/methods/requirements.html#reference-conanfile-methods-requirements"><span class="std std-ref">requirements()</span></a> and
+<a class="reference internal" href="../../reference/conanfile/methods/build_requirements.html#reference-conanfile-methods-build-requirements"><span class="std std-ref">build_requirements()</span></a> docs.</p>
+</div>
 <p>You can check that running the same commands as in the previous examples will lead to the
 same results as before.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
@@ -535,6 +546,7 @@ Windows or that you want to use the system’s CMake installation instead of usi
 <ul class="simple">
 <li><a class="reference internal" href="../../examples/tools/cmake/cmake_toolchain/build_project_cmake_presets.html#examples-tools-cmake-toolchain-build-project-presets"><span class="std std-ref">Using “cmake_layout” + “CMakeToolchain” + “CMakePresets feature” to build your project</span></a>.</li>
 <li><a class="reference internal" href="../developing_packages/package_layout.html#tutorial-package-layout"><span class="std std-ref">Understanding the Conan Package layout</span></a>.</li>
+<li><a class="reference internal" href="../../reference/conanfile/methods.html#reference-conanfile-methods"><span class="std std-ref">Documentation for all conanfile.py available methods</span></a>.</li>
 <li>Importing resource files in the generate() method</li>
 <li>Conditional generators in configure()</li>
 </ul>
@@ -565,7 +577,7 @@ Windows or that you want to use the system’s CMake installation instead of usi
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016-2023, JFrog.
-      Last updated on Oct 13, 2023.
+      Last updated on Oct 17, 2023.
       <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
     </p>
   </div> 
