@@ -7,7 +7,7 @@ Preparing the build
 In the :ref:`previous tutorial section<creating_packages_add_dependencies_to_packages>`,
 we added the `fmt <https://conan.io/center/fmt>`__ requirement to our Conan package to
 provide colour output to our "Hello World" C++ library. In this section, we focus on the
-``generate()`` method of the recipe. The aim of this method generating all the
+``generate()`` method of the recipe. The aim of this method is generating all the
 information that could be needed while running the build step. That means things like:
 
 * Write files to be used in the build step, like
@@ -18,7 +18,7 @@ information that could be needed while running the build step. That means things
   apply for certain cases.
 
 
-We explain to use this method for a simple example based on the previous tutorial section.
+We explain how to use this method for a simple example based on the previous tutorial section.
 We add a `with_fmt` option to the recipe, depending on the value we require the
 `fmt` library or not. We use the `generate()` method to modify the toolchain so that
 it passes a variable to CMake so that we can conditionally add that library and use `fmt`
@@ -36,7 +36,7 @@ You will notice some changes in the `conanfile.py` file from the previous recipe
 Let's check the relevant parts:
 
 .. code-block:: python
-    :emphasize-lines: 12,16,20,27,30,35
+    :emphasize-lines: 12,16,20,29,32,37,38
 
     ...
     from conan.tools.build import check_max_cppstd, check_min_cppstd
@@ -59,7 +59,7 @@ Let's check the relevant parts:
         def validate(self):
             if self.options.with_fmt:
                 check_min_cppstd(self, "11")
-                check_max_cppstd(self, "14")
+                check_max_cppstd(self, "20")
 
         def source(self):
             git = Git(self)
